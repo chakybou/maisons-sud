@@ -1,8 +1,14 @@
 # -*- coding: utf-8 -*-
-"""Génère la page HTML statique de la short-list immobilière.
+"""Génère index.html, la page publiée.
 
-Données : biens.py (source de vérité). Ne jamais éditer le HTML directement.
-Contrainte : ZÉRO JavaScript — Quick Look sur iPhone ne l'exécute pas.
+Données : biens.py (source de vérité). Ne jamais éditer le HTML directement :
+il est écrasé à chaque exécution.
+
+Contrainte : ZÉRO JavaScript — Quick Look sur iPhone ne l'exécute pas et la
+page apparaîtrait vide. Un assert en fin de fichier le vérifie.
+
+Le site est servi directement depuis la branche main : on génère en local,
+on commit index.html, on pousse. Pas de construction côté GitHub.
 
 Usage : python3 generer-page-maisons.py [dossier_de_sortie]
 """
@@ -11,7 +17,7 @@ import sys
 from html import escape
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from biens import BIENS, MAJ  # noqa: E402
+from biens import BIENS, MAJ, URL_SITE  # noqa: E402
 
 SORTIE = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent
 
@@ -60,8 +66,9 @@ def fiche(b):
             f'<a href="{escape(u, quote=True)}" target="_blank" rel="noopener noreferrer">{escape(lbl)}</a>'
             for lbl, u in autres)
         ailleurs = f'<p class="ailleurs">Aussi publié&nbsp;: {liens}</p>' 
+    classe = "fiche rouge" if b.get("rouge") else "fiche"
     return f"""
-    <article class="fiche">
+    <article class="{classe}">
       <div class="media">{vignettes}</div>
       <div class="infos">
         <p class="ref">{escape(b["agence"])} — {escape(b["source"])}, réf. {escape(b["ref"])}</p>
@@ -84,9 +91,16 @@ def fiche(b):
     </article>"""
 
 
+# Les biens marqués `rouge` passent en fin de page, ordre relatif conservé.
+BIENS = sorted(BIENS, key=lambda b: bool(b.get("rouge")))
+
 prix = [b["prix"] for b in BIENS]
 # Les communes affichées suivent les données : rien à mettre à jour à la main.
 communes = ", ".join(dict.fromkeys(b["commune"].split(" — ")[0] for b in BIENS))
+# Résumé d'une ligne, réutilisé par les messageries dans l'aperçu du lien.
+description = (f"{len(BIENS)} biens retenus, de {million(min(prix))} à "
+               f"{million(max(prix))} M€ — {communes}.")
+
 resume = (f'<span><b>{len(BIENS)}</b> biens retenus</span>'
           f'<span>De <b>{million(min(prix))}</b> à <b>{million(max(prix))} M€</b></span>'
           f'<span>{escape(communes)}</span>')
@@ -147,6 +161,10 @@ CSS = """
   .lien:hover,.lien:focus-visible{background:var(--encre);}
   a:focus-visible{outline:2px solid var(--mer);outline-offset:3px;}
 
+  /* Fiches écartées : tout le texte bascule en rouge via les variables. */
+  .fiche.rouge{--encre:#A32E28;--pin:#A32E28;--mer:#A32E28;--gris:#C2736D;
+    color:var(--encre);}
+
   .ailleurs{margin:-14px 0 22px;font-size:.86rem;color:var(--gris);}
   .ailleurs a{color:var(--mer);text-decoration:none;border-bottom:1px solid var(--trait);}
   .ailleurs a:hover,.ailleurs a:focus-visible{border-bottom-color:var(--mer);}
@@ -168,6 +186,19 @@ page = f"""<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Maisons — Var &amp; Côte d'Azur</title>
+<meta name="description" content="{escape(description, quote=True)}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Maisons — Var &amp; Côte d'Azur">
+<meta property="og:title" content="Maisons — Var &amp; Côte d'Azur">
+<meta property="og:description" content="{escape(description, quote=True)}">
+<meta property="og:url" content="{escape(URL_SITE, quote=True)}">
+<meta property="og:image" content="{escape(URL_SITE + 'preview.jpg', quote=True)}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Maisons — Var &amp; Côte d'Azur">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&display=swap" rel="stylesheet">
@@ -197,6 +228,6 @@ page = f"""<!DOCTYPE html>
 assert "<script" not in page, "aucun JavaScript ne doit entrer dans la page"
 
 SORTIE.mkdir(parents=True, exist_ok=True)
-cible = SORTIE / "maisons-var-cote-azur.html"
+cible = SORTIE / "index.html"
 cible.write_text(page, encoding="utf-8")
 print(f"écrit : {cible} — {len(page)} octets, 0 <script>")

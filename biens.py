@@ -11,6 +11,8 @@ Champ `photos`    : 1 à 3 URLs de photos sur le serveur de l'annonce (utilisée
                     à nouveau sur l'annonce.
 Champ `autres_annonces` : liste optionnelle de (libellé, url) — le même bien publié
                     ailleurs. Omettre le champ si le bien n'est que sur une annonce.
+Champ `rouge`     : True = fiche affichée en rouge et reléguée en fin de page.
+                    Omettre le champ (ou False) pour une fiche normale.
 Champ `photo_fichier` : nom du fichier dans photos/ (utilisé par le PDF, qui doit
                     embarquer l'image ; les serveurs d'annonces bloquent l'accès
                     automatisé, donc la photo est stockée localement).
@@ -48,7 +50,7 @@ BIENS = [
        ],
        photo_fichier="107859973.webp"),
 
-  dict(ref="96300379", titre="Villa avec jardin et terrasse",
+  dict(ref="96300379", rouge=True, titre="Villa avec jardin et terrasse",
        commune="Agay", secteur="Var (83)",
        agence="Millesime Immobilier Agay", source="Le Figaro Propriétés",
        prix=1380000, prixM2="5 208 € / m²", negociation=None,
@@ -63,7 +65,7 @@ BIENS = [
        ],
        photo_fichier="96300379.webp"),
 
-  dict(ref="89126557", titre="Villa avec piscine et terrasse",
+  dict(ref="89126557", rouge=True, titre="Villa avec piscine et terrasse",
        commune="Saint-Raphaël — Boulouris", secteur="Var (83)",
        agence="Agence du Cap Immogolf", source="Le Figaro Propriétés",
        prix=1300000, prixM2="5 909 € / m²", negociation=None,
@@ -113,7 +115,7 @@ BIENS = [
          ("Superimmo", "https://www.superimmo.com/annonces/achat-maison-136m-saint-aygulf-83370-x11p72a"),
        ]),
 
-  dict(ref="250399619", titre="Villa d'architecte avec piscine et vue mer",
+  dict(ref="250399619", rouge=True, titre="Villa d'architecte avec piscine et vue mer",
        commune="Saint-Aygulf", secteur="Var (83)",
        agence="Coldwell Banker Estérel Realty", source="Belles Demeures",
        prix=1490000, prixM2="5 960 € / m²", negociation=None,
@@ -145,3 +147,7 @@ BIENS = [
 ]
 
 MAJ = "9 septembre 2026"
+
+# Adresse publique de la page. Sert aux balises de partage (WhatsApp,
+# iMessage, Slack…) qui exigent des URLs absolues.
+URL_SITE = "https://chakybou.github.io/maisons-sud/"
