@@ -41,7 +41,7 @@ BIENS = [
        prix=1260000, prixM2="11 150 € / m²", negociation=None,
        surface="113 m²", terrain="950 m²", pieces="4", chambres="3",
        piscine="Oui, à débordement", dpe="E / GES C", vue=None,
-       commentaire="Petite maison. Tout est à buller et à refaire. Belle vue.",
+       commentaire="Petite maison. Tout est à buller et à refaire. Belle vue. À 11 150 € le m², chère au m².",
        url="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/107859973/?priceMin=800000&priceMax=1800000",
        photos=[
          "https://lh3.googleusercontent.com/Udp-XOXwBosxMMg5EcZKoMqYJxIVj6QfzxfjQzLuNm7hE29_FlVfXER2sJnSPyjFwWBxBAjaHSKCwfyQnMACWZlXZAWjrpQ__81p0LA=rj-w900-h675-n-l80",
@@ -114,21 +114,6 @@ BIENS = [
          ("ParuVendu", "https://www.paruvendu.fr/immobilier/vente/maison/1293380043A1KIVHMN000"),
          ("Superimmo", "https://www.superimmo.com/annonces/achat-maison-136m-saint-aygulf-83370-x11p72a"),
        ]),
-
-  dict(ref="250399619", rouge=True, titre="Villa d'architecte avec piscine et vue mer",
-       commune="Saint-Aygulf", secteur="Var (83)",
-       agence="Coldwell Banker Estérel Realty", source="Belles Demeures",
-       prix=1490000, prixM2="5 960 € / m²", negociation=None,
-       surface="250 m²", terrain=None, pieces="7", chambres="4",
-       piscine="Oui", dpe="B / GES A", vue="Mer, ville et Estérel",
-       commentaire="Piscine à l'arrière. 250 m².",
-       url="https://www.bellesdemeures.com/annonces/vente/tt-2-tb-2-pl-36033/250399619/?idtt=2&pl=35979%2c36028%2c36033&tri=selection&idtb=2&pxmin=1000000&pxmax=1700000&si_vue=1&m=search_to_detail",
-       photos=[
-         "https://v.seloger.com/s/crop/933x645/visuels/0/s/v/2/0sv2upv1ogvlbu0n1xfpd5k6gstlh9iuur56g5pc0.jpg",
-         "https://v.seloger.com/s/crop/933x645/visuels/1/3/i/f/13iffyalgm63beiecboqme2lj8qimdu5wswc5fq2o.jpg",
-         "https://v.seloger.com/s/crop/933x645/visuels/2/7/t/o/27tow08um9522da4srrkns8o2u3nxawetpzch5x1c.jpg",
-       ],
-       photo_fichier=None),
 
   dict(ref="98255163", titre="Maison avec piscine en bord de mer",
        commune="Rayol-Canadel-sur-Mer", secteur="Var (83)",
