@@ -94,14 +94,18 @@ def fiche(b):
 # Les biens marqués `rouge` passent en fin de page, ordre relatif conservé.
 BIENS = sorted(BIENS, key=lambda b: bool(b.get("rouge")))
 
-prix = [b["prix"] for b in BIENS]
-# Les communes affichées suivent les données : rien à mettre à jour à la main.
-communes = ", ".join(dict.fromkeys(b["commune"].split(" — ")[0] for b in BIENS))
+# Le bandeau ne décrit que les biens réellement retenus : les fiches rouges
+# restent affichées en fin de page mais ne comptent ni dans le total, ni dans
+# la fourchette de prix, ni dans la liste des communes.
+retenus = [b for b in BIENS if not b.get("rouge")] or BIENS
+
+prix = [b["prix"] for b in retenus]
+communes = ", ".join(dict.fromkeys(b["commune"].split(" — ")[0] for b in retenus))
 # Résumé d'une ligne, réutilisé par les messageries dans l'aperçu du lien.
-description = (f"{len(BIENS)} biens retenus, de {million(min(prix))} à "
+description = (f"{len(retenus)} biens retenus, de {million(min(prix))} à "
                f"{million(max(prix))} M€ — {communes}.")
 
-resume = (f'<span><b>{len(BIENS)}</b> biens retenus</span>'
+resume = (f'<span><b>{len(retenus)}</b> biens retenus</span>'
           f'<span>De <b>{million(min(prix))}</b> à <b>{million(max(prix))} M€</b></span>'
           f'<span>{escape(communes)}</span>')
 
