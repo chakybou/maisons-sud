@@ -174,9 +174,23 @@ BIENS = [
          "https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/6586e2b9b0a68391b2313fbd39f8dcca.webp",
        ],
        photo_fichier=None),
+  dict(ref="26164VWGRV7G", titre="Villa rénovée avec piscine et vue mer",
+       commune="Saint-Raphaël — Boulouris", secteur="Var (83)",
+       agence="3% Immobilier Prestige", source="SeLoger",
+       prix=870000, prixM2="6 591 € / m²", negociation=None,
+       surface="132 m²", terrain="950 m²", pieces="5", chambres="4",
+       piscine="Oui, chauffée", dpe="C / GES B", vue="Mer, terrasse plein sud",
+       commentaire="Peut-être pas de vue mer.",
+       url="https://www.seloger.com/annonce/achat/provence-alpes-cote-d-azur/var-83/saint-raphael-83700/26164VWGRV7G",
+       photos=[
+         "https://mms.seloger.com/3/4/f/8/34f8e695-17a3-4ee9-b45b-c94d81e79f9f.jpg?ci_seal=23c2659421c1e64efb3ac42c4e054e3b1009d40a",
+         "https://mms.seloger.com/6/a/0/b/6a0bb2a7-a8e7-4571-8b20-f3e86abadd7d.jpg?ci_seal=824e12acf07a248f5fc600e3a2a9f9802537104e",
+         "https://mms.seloger.com/1/d/b/a/1dbac27f-86fa-46d1-bc4c-73b525cf21b4.jpg?ci_seal=03f602d7555c56b53b0cf93f2ae1c42d7d16b2d2",
+       ],
+       photo_fichier=None),
 ]
 
-MAJ = "9 septembre 2026"
+MAJ = "10 septembre 2026"
 
 # Adresse publique de la page. Sert aux balises de partage (WhatsApp,
 # iMessage, Slack…) qui exigent des URLs absolues.
