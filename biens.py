@@ -129,7 +129,7 @@ BIENS = [
          "https://lh3.googleusercontent.com/bF3USt9iRsADWDZDOdHY2w1NYjElHMPHVSuDF-ZowFpTU9Ujmfb9d4p4s1ZJKYJWP3vO85jrgR2ix79J-ey8JABkaBabnU0WtoVF6A=rj-w900-h675-n-l80",
        ],
        photo_fichier=None),
-  dict(ref="82558858", titre="Bastide de charme avec vue mer panoramique",
+  dict(ref="82558858", rouge=True, titre="Bastide de charme avec vue mer panoramique",
        commune="Saint-Raphaël — Boulouris", secteur="Var (83)",
        agence="BIRD Saint-Raphaël", source="Côte d'Azur Estate",
        prix=1990000, prixM2="7 625 € / m²", negociation=None,
@@ -188,9 +188,24 @@ BIENS = [
          "https://mms.seloger.com/1/d/b/a/1dbac27f-86fa-46d1-bc4c-73b525cf21b4.jpg?ci_seal=03f602d7555c56b53b0cf93f2ae1c42d7d16b2d2",
        ],
        photo_fichier=None),
+  dict(ref="100823851", titre="Villa provençale avec piscine et vue mer",
+       commune="Agay", secteur="Var (83)",
+       agence="Millesime Immobilier Agay", source="Le Figaro Propriétés",
+       prix=1790000, prixM2="7 991 € / m²",
+       negociation="À voir si on peut baisser le prix de 200 k€",
+       surface="224 m²", terrain="1 255 m²", pieces="7", chambres="4",
+       piscine="Oui", dpe="C / GES A", vue="Mer panoramique",
+       commentaire="À voir si on peut baisser le prix de 200 k€.",
+       url="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/100823851/",
+       photos=[
+         "https://lh3.googleusercontent.com/3EYiYSf3hw5Nhc16s-z1vzrNOBshTre0qI3X-V9YPzi0i4rEdgcLQoNdrWHse8YWyLylV1tA9VrXajIkCgJwD3eTGBF1pCVhUK5y=rj-w900-h675-n-l80",
+         "https://lh3.googleusercontent.com/tEjTfSvz4wNz4UY1ivta1OsVECO9f-o6_V7NLjxtaYaKpQOq4tRGwSRQo20U_CyLKyyk0WegJS80s7cfc60Vah7lxVxzFr3FP5II9Q=rj-w900-h675-n-l80",
+         "https://lh3.googleusercontent.com/58ycxLIIbsK3mlfS0dcyo8HSxPXIDWhFg-wJPDfoqIBWJkCynU5KCOp7Dx3EEUxleKkUswfRIFZzK7gnF1W97kwVaZ_QU9uP6CPmNQ=rj-w900-h675-n-l80",
+       ],
+       photo_fichier=None),
 ]
 
-MAJ = "10 septembre 2026"
+MAJ = "11 septembre 2026"
 
 # Adresse publique de la page. Sert aux balises de partage (WhatsApp,
 # iMessage, Slack…) qui exigent des URLs absolues.
