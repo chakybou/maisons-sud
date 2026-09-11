@@ -203,6 +203,36 @@ BIENS = [
          "https://lh3.googleusercontent.com/58ycxLIIbsK3mlfS0dcyo8HSxPXIDWhFg-wJPDfoqIBWJkCynU5KCOp7Dx3EEUxleKkUswfRIFZzK7gnF1W97kwVaZ_QU9uP6CPmNQ=rj-w900-h675-n-l80",
        ],
        photo_fichier=None),
+  dict(ref="3175872602", titre="Maison en position dominante, vue mer",
+       commune="Saint-Aygulf", secteur="Fréjus — Var (83)",
+       agence="Agence ANGELI", source="leboncoin",
+       prix=1295000, prixM2="8 094 € / m²", negociation=None,
+       surface="160 m²", terrain="1 271 m²", pieces="4", chambres="3",
+       piscine=None, dpe=None, vue="Mer et montagnes, sans vis-à-vis",
+       commentaire="De plain-pied, deux suites parentales, plus une chambre indépendante à l'extérieur.",
+       url="https://www.leboncoin.fr/ad/ventes_immobilieres/3175872602",
+       photos=[
+         "https://img.leboncoin.fr/api/v1/lbcpb1/images/9c/e8/12/9ce81278f7536c6b45f57789a71aa3e2753d69d2.jpg?rule=ad-image",
+         "https://img.leboncoin.fr/api/v1/lbcpb1/images/69/cb/d7/69cbd7996fef99c67eb2e5aa23556f6156c5ac47.jpg?rule=ad-image",
+         "https://img.leboncoin.fr/api/v1/lbcpb1/images/34/42/ab/3442ab826cdd65f47a259f2e8979aa4bf1be5dc0.jpg?rule=ad-image",
+       ],
+       photo_fichier=None),
+
+  dict(ref="3230333763", titre="Villa avec piscine et vue panoramique",
+       commune="Saint-Aygulf", secteur="Fréjus — Var (83)",
+       agence="Century 21 Sud Habitat", source="leboncoin",
+       prix=1250000, prixM2="7 764 € / m²", negociation=None,
+       surface="161 m²", terrain="1 070 m²", pieces="7", chambres="5",
+       piscine="Oui, traditionnelle (4 x 8 m)", dpe=None,
+       vue="Mer, baie de Fréjus—Saint-Raphaël et Estérel",
+       commentaire="En exclusivité. Deux appartements indépendants, possibilité d'extension.",
+       url="https://www.leboncoin.fr/ad/ventes_immobilieres/3230333763",
+       photos=[
+         "https://img.leboncoin.fr/api/v1/lbcpb1/images/93/a1/97/93a197f4307b42c80e7195d035a03cc6d35e71d8.jpg?rule=ad-image",
+         "https://img.leboncoin.fr/api/v1/lbcpb1/images/4a/0e/50/4a0e505a57c09986aa2047b40d881f314279c9b7.jpg?rule=ad-image",
+         "https://img.leboncoin.fr/api/v1/lbcpb1/images/38/ae/7d/38ae7d0867c8fdcbc652572a9af5a67b97f5a809.jpg?rule=ad-image",
+       ],
+       photo_fichier=None),
 ]
 
 MAJ = "11 septembre 2026"
