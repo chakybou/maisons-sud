@@ -13,13 +13,20 @@ Champ `autres_annonces` : liste optionnelle de (libellé, url) — le même bien
                     ailleurs. Omettre le champ si le bien n'est que sur une annonce.
 Champ `rouge`     : True = fiche affichée en rouge et reléguée en fin de page.
                     Omettre le champ (ou False) pour une fiche normale.
+Champ `en_place`  : à utiliser avec `rouge` — la fiche reste rouge mais garde
+                    sa position dans la liste au lieu de descendre à la fin.
+Champs de visite : `rdv` (date et heure, texte libre), `rdv_lieu` (adresse ou
+                    point de rencontre), `rdv_confirme` (False si le créneau
+                    n'est pas encore validé), `contact` (nom) et `tel` (liste de
+                    numéros). Tous facultatifs : ce qui manque n'est pas affiché.
 Champ `photo_fichier` : nom du fichier dans photos/ (utilisé par le PDF, qui doit
                     embarquer l'image ; les serveurs d'annonces bloquent l'accès
                     automatisé, donc la photo est stockée localement).
 """
 
 BIENS = [
-  dict(ref="103041457", titre="Villa avec piscine en bord de mer",
+  dict(ref="103041457", rdv="Mardi 22 septembre, 12h30",
+       titre="Villa avec piscine en bord de mer",
        commune="Saint-Aygulf", secteur="Var (83)",
        agence="Côte d'Azur Sotheby's International Realty", source="Le Figaro Propriétés",
        prix=1570000, prixM2="8 722 € / m²",
@@ -35,7 +42,9 @@ BIENS = [
        ],
        photo_fichier="103041457.webp"),
 
-  dict(ref="107859973", titre="Villa avec piscine et jardin",
+  dict(ref="107859973", rdv="Mardi 22 septembre, 9h30",
+       contact="Brandon Baraud", tel=["04 94 82 02 60", "06 15 88 88 71"],
+       titre="Villa avec piscine et jardin",
        commune="Agay", secteur="Var (83)",
        agence="Millesime Immobilier Agay", source="Le Figaro Propriétés",
        prix=1260000, prixM2="11 150 € / m²", negociation=None,
@@ -80,7 +89,10 @@ BIENS = [
        ],
        photo_fichier="89126557.webp"),
 
-  dict(ref="3250258132", titre="Villa 6 pièces",
+  dict(ref="3250258132", rdv="Lundi 21 septembre, 17h00",
+       rdv_lieu="193 rue Ayguebonne, 83700 Saint-Raphaël",
+       contact="Michael Meresse", tel=["06 10 50 82 35"],
+       titre="Villa 6 pièces",
        commune="Saint-Raphaël — Aiguebonne", secteur="Var (83)",
        agence="Canat & Warton", source="leboncoin",
        prix=1370000, prixM2="7 611 € / m²", negociation=None,
@@ -95,7 +107,9 @@ BIENS = [
        ],
        photo_fichier="3250258132.webp"),
 
-  dict(ref="107349341", titre="Maison en bord de mer avec terrasse",
+  dict(ref="107349341", rdv="Mardi 22 septembre, 14h00",
+       contact="Émilie Catinella", tel=["07 86 60 90 19"],
+       titre="Maison en bord de mer avec terrasse",
        commune="Saint-Aygulf", secteur="Var (83)",
        agence="Bonaparte", source="Le Figaro Propriétés",
        prix=1199000, prixM2="7 993 € / m²", negociation=None,
@@ -115,7 +129,7 @@ BIENS = [
          ("Superimmo", "https://www.superimmo.com/annonces/achat-maison-136m-saint-aygulf-83370-x11p72a"),
        ]),
 
-  dict(ref="98255163", titre="Maison avec piscine en bord de mer",
+  dict(ref="98255163", rouge=True, en_place=True, titre="Maison avec piscine en bord de mer",
        commune="Rayol-Canadel-sur-Mer", secteur="Var (83)",
        agence="Coldwell Banker St Barth Azur", source="Le Figaro Propriétés",
        prix=1500000, prixM2="10 000 € / m²", negociation=None,
@@ -174,7 +188,10 @@ BIENS = [
          "https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/6586e2b9b0a68391b2313fbd39f8dcca.webp",
        ],
        photo_fichier=None),
-  dict(ref="26164VWGRV7G", titre="Villa rénovée avec piscine et vue mer",
+  dict(ref="26164VWGRV7G", rdv="Mardi 22 septembre, 11h00",
+       rdv_lieu="Devant la Poste de Boulouris",
+       contact="Jérémi Michaux", tel=["06 20 41 09 73"],
+       titre="Villa rénovée avec piscine et vue mer",
        commune="Saint-Raphaël — Boulouris", secteur="Var (83)",
        agence="3% Immobilier Prestige", source="SeLoger",
        prix=870000, prixM2="6 591 € / m²", negociation=None,
@@ -203,13 +220,15 @@ BIENS = [
          "https://lh3.googleusercontent.com/58ycxLIIbsK3mlfS0dcyo8HSxPXIDWhFg-wJPDfoqIBWJkCynU5KCOp7Dx3EEUxleKkUswfRIFZzK7gnF1W97kwVaZ_QU9uP6CPmNQ=rj-w900-h675-n-l80",
        ],
        photo_fichier=None),
-  dict(ref="3175872602", titre="Maison en position dominante, vue mer",
+  dict(ref="3175872602", rdv="Mercredi 23 septembre, 14h00", rdv_confirme=False,
+       tel=["04 94 44 50 00"],
+       titre="Maison en position dominante, vue mer",
        commune="Saint-Aygulf", secteur="Fréjus — Var (83)",
        agence="Agence ANGELI", source="leboncoin",
        prix=1295000, prixM2="8 094 € / m²", negociation=None,
        surface="160 m²", terrain="1 271 m²", pieces="4", chambres="3",
        piscine=None, dpe=None, vue="Mer et montagnes, sans vis-à-vis",
-       commentaire="De plain-pied, deux suites parentales, plus une chambre indépendante à l'extérieur.",
+       commentaire="Visite groupée avec les deux autres biens Angeli. De plain-pied, deux suites parentales, plus une chambre indépendante à l'extérieur.",
        url="https://www.leboncoin.fr/ad/ventes_immobilieres/3175872602",
        photos=[
          "https://img.leboncoin.fr/api/v1/lbcpb1/images/9c/e8/12/9ce81278f7536c6b45f57789a71aa3e2753d69d2.jpg?rule=ad-image",
@@ -218,7 +237,8 @@ BIENS = [
        ],
        photo_fichier=None),
 
-  dict(ref="3230333763", titre="Villa avec piscine et vue panoramique",
+  dict(ref="3230333763", contact="Amandine Josier", tel=["06 60 02 50 81"],
+       titre="Villa avec piscine et vue panoramique",
        commune="Saint-Aygulf", secteur="Fréjus — Var (83)",
        agence="Century 21 Sud Habitat", source="leboncoin",
        prix=1250000, prixM2="7 764 € / m²", negociation=None,
@@ -231,6 +251,56 @@ BIENS = [
          "https://img.leboncoin.fr/api/v1/lbcpb1/images/93/a1/97/93a197f4307b42c80e7195d035a03cc6d35e71d8.jpg?rule=ad-image",
          "https://img.leboncoin.fr/api/v1/lbcpb1/images/4a/0e/50/4a0e505a57c09986aa2047b40d881f314279c9b7.jpg?rule=ad-image",
          "https://img.leboncoin.fr/api/v1/lbcpb1/images/38/ae/7d/38ae7d0867c8fdcbc652572a9af5a67b97f5a809.jpg?rule=ad-image",
+       ],
+       photo_fichier=None),
+  dict(ref="654", titre="Villa néo-provençale dans un domaine privé",
+       commune="Agay", secteur="Var (83)",
+       agence="Millesime Immobilier Agay", source="Millesime Immobilier",
+       prix=1150000, prixM2="5 897 € / m²", negociation=None,
+       surface="195 m²", terrain="1 310 m²", pieces="7", chambres="4",
+       piscine="Oui, électrolyse au sel", dpe="B / GES A",
+       vue="Dégagée et mer, sud-ouest",
+       commentaire="Visite groupée avec l'autre bien Millesime : un seul rendez-vous pour les deux. Domaine privé, construite en 2005, pompe à chaleur et panneaux solaires.",
+       rdv="Mardi 22 septembre, 9h30",
+       contact="Brandon Baraud", tel=["04 94 82 02 60", "06 15 88 88 71"],
+       url="https://www.millesimeimmobilier.com/fiches/4-40-198_61357027/villa-neo-provencale-avec-vue-mer-dans-un-domaine-prive.html",
+       photos=[
+         "https://www.millesimeimmobilier.com/office5/millesime_03022026/catalog/images/pr_p/6/1/3/5/7/0/2/7/61357027r.jpg",
+         "https://www.millesimeimmobilier.com/office5/millesime_03022026/catalog/images/pr_p/6/1/3/5/7/0/2/7/61357027a.jpg",
+         "https://www.millesimeimmobilier.com/office5/millesime_03022026/catalog/images/pr_p/6/1/3/5/7/0/2/7/61357027b.jpg",
+       ],
+       photo_fichier=None),
+  dict(ref="7168", titre="Villa provençale avec vue mer panoramique",
+       commune="Saint-Aygulf", secteur="Fréjus — Var (83)",
+       agence="Agence ANGELI", source="Angeli Immobilier",
+       prix=950000, prixM2="7 037 € / m²", negociation=None,
+       surface="135 m²", terrain="960 m²", pieces="6", chambres="4",
+       piscine="Oui, avec pool house", dpe=None, vue="Mer panoramique",
+       commentaire="Visite groupée avec les deux autres biens Angeli. Sur trois niveaux, loggia à l'étage, nombreuses possibilités selon l'annonce.",
+       rdv="Mercredi 23 septembre, 14h00", rdv_confirme=False,
+       tel=["04 94 44 50 00"],
+       url="https://www.saint-aygulf-immobilier.com/3185-saint-aygulf-villa-provencale-vue-mer.html",
+       photos=[
+         "https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/5226e9d086b8256979e8acf0b9911c49/photo_7b57150ba9496b5629c88dd3a0858749.jpg",
+         "https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/5226e9d086b8256979e8acf0b9911c49/photo_c81562454b8cce0a11f9d611b8dda2b7.jpg",
+         "https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/5226e9d086b8256979e8acf0b9911c49/photo_3da5550f3bb29ffffa570eefdedce765.jpg",
+       ],
+       photo_fichier=None),
+
+  dict(ref="6925", titre="Villa de plain-pied rénovée, vue mer panoramique",
+       commune="Saint-Aygulf", secteur="Fréjus — Var (83)",
+       agence="Agence ANGELI", source="Angeli Immobilier",
+       prix=1050000, prixM2="9 545 € / m²", negociation=None,
+       surface="110 m²", terrain="1 253 m²", pieces="4", chambres="3",
+       piscine="Oui, 10 x 4,5 m avec pool house", dpe=None, vue="Mer panoramique",
+       commentaire="Visite groupée avec les deux autres biens Angeli. Plain-pied entièrement rénové, dépendance transformable en studio, terrain à deux accès avec possibilité d'agrandissement.",
+       rdv="Mercredi 23 septembre, 14h00", rdv_confirme=False,
+       tel=["04 94 44 50 00"],
+       url="https://www.saint-aygulf-immobilier.com/2871-saint-aygulf-vue-mer-panoramique-prestige.html",
+       photos=[
+         "https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/4f93ebf5404bce01e094636323ada256/photo_f60fc913d85a75c7e1c2ce5d428f7388.jpg",
+         "https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/4f93ebf5404bce01e094636323ada256/photo_d42277d7ce00526653fd4db59ed852ad.jpg",
+         "https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/4f93ebf5404bce01e094636323ada256/photo_c11b6b6c17ea0144d0cbb1b355863236.jpg",
        ],
        photo_fichier=None),
 ]

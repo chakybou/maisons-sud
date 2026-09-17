@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Maisons — Var &amp; Côte d'Azur</title>
-<meta name="description" content="9 biens retenus, de 0,87 à 1,79 M€ — Saint-Aygulf, Agay, Saint-Raphaël, Rayol-Canadel-sur-Mer.">
+<meta name="description" content="11 biens retenus, de 0,87 à 1,79 M€ — Saint-Aygulf, Agay, Saint-Raphaël.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Maisons — Var &amp; Côte d'Azur">
 <meta property="og:title" content="Maisons — Var &amp; Côte d'Azur">
-<meta property="og:description" content="9 biens retenus, de 0,87 à 1,79 M€ — Saint-Aygulf, Agay, Saint-Raphaël, Rayol-Canadel-sur-Mer.">
+<meta property="og:description" content="11 biens retenus, de 0,87 à 1,79 M€ — Saint-Aygulf, Agay, Saint-Raphaël.">
 <meta property="og:url" content="https://chakybou.github.io/maisons-sud/">
 <meta property="og:image" content="https://chakybou.github.io/maisons-sud/preview.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -40,6 +40,25 @@
   .resume{display:flex;flex-wrap:wrap;gap:8px 34px;margin-top:30px;font-size:.9rem;color:var(--gris);}
   .resume b{color:var(--encre);font-weight:600;}
 
+  .planning{padding:34px 0 6px;border-bottom:1px solid var(--trait);}
+  .planning h2{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:1.3rem;
+    margin:0 0 18px;}
+  .jours{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;}
+  .jour{background:var(--blanc);border-radius:2px;padding:14px 16px 16px;}
+  .jour h3{margin:0 0 10px;font-size:.82rem;font-weight:600;color:var(--gris);
+    letter-spacing:.03em;text-transform:uppercase;}
+  .jour ul{list-style:none;margin:0;padding:0;}
+  .visite{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px;
+    padding:7px 0;border-top:1px solid var(--trait);font-size:.9rem;}
+  .visite:first-child{border-top:none;padding-top:0;}
+  .visite .h{font-weight:600;font-variant-numeric:tabular-nums;min-width:3.2em;}
+  .visite .no{font-family:"Fraunces",Georgia,serif;font-size:1.05rem;
+    color:var(--pin);min-width:1.1em;}
+  .visite.rouge .no{color:#A32E28;}
+  .visite .lieu{color:var(--gris);flex:1 1 100%;margin-left:3.2em;
+    font-size:.84rem;line-height:1.3;}
+  .jour .rien{margin:0;color:var(--trait);font-size:1rem;}
+
   .fiche{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);
     gap:36px;padding:44px 0;border-bottom:1px solid var(--trait);}
   .media{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-content:start;}
@@ -47,6 +66,9 @@
     aspect-ratio:4/3;grid-column:1 / -1;}
   .photo.mini{grid-column:auto;aspect-ratio:4/3;}
   .photo img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  .repere{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:1.5rem;
+    line-height:1;color:var(--pin);margin:0 0 10px;}
 
   .ref{font-size:.76rem;color:var(--gris);letter-spacing:.02em;margin:0 0 6px;}
   h2{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:1.62rem;
@@ -81,6 +103,21 @@
   .fiche.rouge{--encre:#A32E28;--pin:#A32E28;--mer:#A32E28;--gris:#C2736D;
     color:var(--encre);}
 
+  .rdv{margin:0 0 24px;padding:14px 18px;background:var(--blanc);
+    border-left:3px solid var(--mer);border-radius:2px;max-width:56ch;}
+  .rdv p{margin:0;}
+  .rdv .quand{font-weight:600;font-size:1.02rem;color:var(--encre);}
+  .rdv .quand.sans{font-weight:500;color:var(--gris);}
+  .apre{display:inline-block;margin-left:10px;padding:2px 8px;border-radius:2px;
+    background:#A32E28;color:var(--blanc);font-size:.72rem;font-weight:600;
+    letter-spacing:.02em;vertical-align:1px;white-space:nowrap;}
+  .rdv .ou{margin-top:4px;font-size:.92rem;color:var(--encre);}
+  .rdv .qui{margin-top:8px;font-size:.9rem;color:var(--gris);}
+  .rdv .qui a{color:var(--mer);text-decoration:none;
+    border-bottom:1px solid var(--trait);}
+  .rdv .qui a:hover,.rdv .qui a:focus-visible{border-bottom-color:var(--mer);}
+  .fiche.rouge .rdv{background:#FBF4F3;border-left-color:#A32E28;}
+
   .ailleurs{margin:-14px 0 22px;font-size:.86rem;color:var(--gris);}
   .ailleurs a{color:var(--mer);text-decoration:none;border-bottom:1px solid var(--trait);}
   .ailleurs a:hover,.ailleurs a:focus-visible{border-bottom-color:var(--mer);}
@@ -89,6 +126,8 @@
 
   @media (max-width:760px){
     .page{padding:0 20px 64px;}
+    .jours{grid-template-columns:1fr;gap:10px;}
+    .visite .lieu{margin-left:0;flex:1 1 auto;}
     header{padding:48px 0 32px;}
     .fiche{grid-template-columns:1fr;gap:24px;padding:36px 0;}
     .prix .montant{font-size:2rem;}
@@ -101,13 +140,16 @@
   <header>
     <h1>Maisons&nbsp;— Var<br>&amp; Côte d'Azur</h1>
     <p class="sous-titre">Sélection en cours pour une résidence secondaire. Chaque fiche renvoie à l'annonce d'origine.</p>
-    <div class="resume"><span><b>9</b> biens retenus</span><span>De <b>0,87</b> à <b>1,79 M€</b></span><span>Saint-Aygulf, Agay, Saint-Raphaël, Rayol-Canadel-sur-Mer</span></div>
+    <div class="resume"><span><b>11</b> biens retenus</span><span>De <b>0,87</b> à <b>1,79 M€</b></span><span>Saint-Aygulf, Agay, Saint-Raphaël</span></div>
   </header>
+
+  <section class="planning"><h2>Visites</h2><div class="jours"><div class="jour"><h3>Lundi 21</h3><ul><li class="visite"><span class="h">17h</span><span class="no">3</span><span class="lieu">193 rue Ayguebonne, 83700 Saint-Raphaël</span></li></ul></div><div class="jour"><h3>Mardi 22</h3><ul><li class="visite"><span class="h">9h30</span><span class="no">2</span><span class="lieu">Agay</span></li><li class="visite"><span class="h">9h30</span><span class="no">10</span><span class="lieu">Agay</span></li><li class="visite"><span class="h">11h</span><span class="no">6</span><span class="lieu">Devant la Poste de Boulouris</span></li><li class="visite"><span class="h">12h30</span><span class="no">1</span><span class="lieu">Saint-Aygulf</span></li><li class="visite"><span class="h">14h</span><span class="no">4</span><span class="lieu">Saint-Aygulf</span></li></ul></div><div class="jour"><h3>Mercredi 23</h3><ul><li class="visite"><span class="h">14h</span><span class="no">8</span><span class="lieu">Saint-Aygulf<span class="apre">à confirmer</span></span></li><li class="visite"><span class="h">14h</span><span class="no">11</span><span class="lieu">Saint-Aygulf<span class="apre">à confirmer</span></span></li><li class="visite"><span class="h">14h</span><span class="no">12</span><span class="lieu">Saint-Aygulf<span class="apre">à confirmer</span></span></li></ul></div><div class="jour"><h3>Jeudi 24</h3><p class="rien">—</p></div></div></section>
 
   <main>
     <article class="fiche">
       <div class="media"><a class="photo" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/103041457/?priceMin=1000000&amp;priceMax=1600000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/T_adkzJJ4w3g1e4OrnQvq87y_Jw7D3hZOU1wVMsCLTYQw2JvgHbvzIzW59qTQosYP63BWAYjRcBfkIaclI45VLEPjxDHmrG5yUAhUA=rj-w900-h675-n-l80" alt="Villa avec piscine en bord de mer" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/103041457/?priceMin=1000000&amp;priceMax=1600000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/7Jl7y35YQAhNRSAfR8ue-toWrGvrIKyDJvKEfcizPF7phkurCXPkjboigmvlrO0WVETsdDCzYMIJHCgCuCjXSnlneVdDzdcgUNtV=rj-w900-h675-n-l80" alt="" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/103041457/?priceMin=1000000&amp;priceMax=1600000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/DBmPFBFLiSqxRDFzvCS07ZXXNRcpP6m-WaYS4Zo_IzruZE17UDLPnOj0TWhdsSNzlnWxanZg0Yp8Mcs_qdZlyejxbqr3PW_RSqTF=rj-w900-h675-n-l80" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">1</p>
         <p class="ref">Côte d&#x27;Azur Sotheby&#x27;s International Realty — Le Figaro Propriétés, réf. 103041457</p>
         <h2><a href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/103041457/?priceMin=1000000&amp;priceMax=1600000" target="_blank" rel="noopener noreferrer">Villa avec piscine en bord de mer</a></h2>
         <p class="lieu">Saint-Aygulf · Var (83)</p>
@@ -122,6 +164,7 @@
 
         <blockquote>La maison idéale du padre.</blockquote>
         
+        <div class="rdv"><p class="quand">Mardi 22 septembre, 12h30</p></div>
 
         <a class="lien" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/103041457/?priceMin=1000000&amp;priceMax=1600000" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
       </div>
@@ -129,6 +172,7 @@
     <article class="fiche">
       <div class="media"><a class="photo" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/107859973/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/Udp-XOXwBosxMMg5EcZKoMqYJxIVj6QfzxfjQzLuNm7hE29_FlVfXER2sJnSPyjFwWBxBAjaHSKCwfyQnMACWZlXZAWjrpQ__81p0LA=rj-w900-h675-n-l80" alt="Villa avec piscine et jardin" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/107859973/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/CxvXojF1G1Zj6q9lch-IXh9gAI4TSvqqP7lqUqbcTMuVOLHbh_QiiQjoKqMDfyKzy2Crvf9CVNyAL58MCSWT9CiyptKdMHx1jKue9g=rj-w900-h675-n-l80" alt="" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/107859973/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/SiZTkUz9S0MVsPJKgIybaGXr2UtAU-byT2IILUHL41C16ycaaFnyNMdTIpD-zDQjiv03dDNbPa9dA0Br30pBQ90nuS7pdKG130tBMfI=rj-w900-h675-n-l80" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">2</p>
         <p class="ref">Millesime Immobilier Agay — Le Figaro Propriétés, réf. 107859973</p>
         <h2><a href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/107859973/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer">Villa avec piscine et jardin</a></h2>
         <p class="lieu">Agay · Var (83)</p>
@@ -143,6 +187,7 @@
 
         <blockquote>Petite maison. Tout est à buller et à refaire. Belle vue. À 11 150 € le m², chère au m².</blockquote>
         
+        <div class="rdv"><p class="quand">Mardi 22 septembre, 9h30</p><p class="qui">Brandon Baraud · <a href="tel:+33494820260">04 94 82 02 60</a> · <a href="tel:+33615888871">06 15 88 88 71</a></p></div>
 
         <a class="lien" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/107859973/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
       </div>
@@ -150,6 +195,7 @@
     <article class="fiche">
       <div class="media"><a class="photo" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3250258132" target="_blank" rel="noopener noreferrer"><img src="https://img.leboncoin.fr/api/v1/lbcpb1/images/81/87/b7/8187b733813d4079b7b488203216033dc673493c.jpg?rule=ad-image" alt="Villa 6 pièces" loading="lazy"></a><a class="photo mini" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3250258132" target="_blank" rel="noopener noreferrer"><img src="https://img.leboncoin.fr/api/v1/lbcpb1/images/ec/13/3a/ec133aae1001fed651657620d14e6df2372deb84.jpg?rule=ad-image" alt="" loading="lazy"></a><a class="photo mini" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3250258132" target="_blank" rel="noopener noreferrer"><img src="https://img.leboncoin.fr/api/v1/lbcpb1/images/6e/cb/2f/6ecb2f49df11039adb421e5a56d53bb94f6cd77f.jpg?rule=ad-image" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">3</p>
         <p class="ref">Canat &amp; Warton — leboncoin, réf. 3250258132</p>
         <h2><a href="https://www.leboncoin.fr/ad/ventes_immobilieres/3250258132" target="_blank" rel="noopener noreferrer">Villa 6 pièces</a></h2>
         <p class="lieu">Saint-Raphaël — Aiguebonne · Var (83)</p>
@@ -164,6 +210,7 @@
 
         <blockquote>La maison à Bouloris (Ayguebonne), à 80 m du train.</blockquote>
         
+        <div class="rdv"><p class="quand">Lundi 21 septembre, 17h00</p><p class="ou">193 rue Ayguebonne, 83700 Saint-Raphaël</p><p class="qui">Michael Meresse · <a href="tel:+33610508235">06 10 50 82 35</a></p></div>
 
         <a class="lien" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3250258132" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
       </div>
@@ -171,6 +218,7 @@
     <article class="fiche">
       <div class="media"><a class="photo" href="https://proprietes.lefigaro.fr/annonces/maison-var-provence+alpes+cote+d+azur-france/107349341/?priceMin=1000000&amp;priceMax=1600000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/RV5HclbK5WNv9JlMSDxCOylFRLIx3HN1gUhyqTq5swpoVuGTgtWWMzOnOrt66TX4XY08RpoAbpJvexrHhD3lqpMUBrVpQlW3BlWQng=rj-w900-h675-n-l80" alt="Maison en bord de mer avec terrasse" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/maison-var-provence+alpes+cote+d+azur-france/107349341/?priceMin=1000000&amp;priceMax=1600000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/kpGe-uGP65pseV-3cMF_GGe38D_Y2mfApEXK4Xl5ew3OSaKbbg7a_QyQ5mHZVcUwFpNBpLJKg_YkIevZfHeYpEaY_5Qh-4s2iQ1L1_U=rj-w900-h675-n-l80" alt="" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/maison-var-provence+alpes+cote+d+azur-france/107349341/?priceMin=1000000&amp;priceMax=1600000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/HgXMd-TzVUZkfT_-dTuw-vQB6fSanoI9Z2Z1fHjUx6bnAFb8YCSWDkEnRUEKV8UhuJWkbvDUm8nJ1vr4RtErFP8oz8dqtJ9lYKhoeg=rj-w900-h675-n-l80" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">4</p>
         <p class="ref">Bonaparte — Le Figaro Propriétés, réf. 107349341</p>
         <h2><a href="https://proprietes.lefigaro.fr/annonces/maison-var-provence+alpes+cote+d+azur-france/107349341/?priceMin=1000000&amp;priceMax=1600000" target="_blank" rel="noopener noreferrer">Maison en bord de mer avec terrasse</a></h2>
         <p class="lieu">Saint-Aygulf · Var (83)</p>
@@ -185,13 +233,15 @@
 
         <blockquote>Aussi en vente chez SAFTI (réf. 1691651) : 12 photos, dont terrasse, piscine et boulodrome. Écarts à vérifier : 136 m² / 5 pièces / terrain 1 125 m² chez SAFTI contre 150 m² / 6 pièces / terrain 1 455 m² ici.</blockquote>
         <p class="ailleurs">Aussi publié&nbsp;: <a href="https://www.safti.fr/annonces/achat/maison/saint-aygulf-83370/1691651" target="_blank" rel="noopener noreferrer">SAFTI — 12 photos</a> · <a href="https://www.paruvendu.fr/immobilier/vente/maison/1293380043A1KIVHMN000" target="_blank" rel="noopener noreferrer">ParuVendu</a> · <a href="https://www.superimmo.com/annonces/achat-maison-136m-saint-aygulf-83370-x11p72a" target="_blank" rel="noopener noreferrer">Superimmo</a></p>
+        <div class="rdv"><p class="quand">Mardi 22 septembre, 14h00</p><p class="qui">Émilie Catinella · <a href="tel:+33786609019">07 86 60 90 19</a></p></div>
 
         <a class="lien" href="https://proprietes.lefigaro.fr/annonces/maison-var-provence+alpes+cote+d+azur-france/107349341/?priceMin=1000000&amp;priceMax=1600000" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
       </div>
     </article>
-    <article class="fiche">
+    <article class="fiche rouge">
       <div class="media"><a class="photo" href="https://proprietes.lefigaro.fr/annonces/maison-var-provence+alpes+cote+d+azur-france/98255163/?priceMin=1000000&amp;priceMax=1700000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/ESOUrEtEydSjN3jSTyrDFeFRjivpHTK7I1l36pBVFIj5op3GjvnXfYOIXQLp5DT1my6ymSSenjh1s3A7ld9aL3VWsxGe6HQcb2_jSQ=rj-w900-h675-n-l80" alt="Maison avec piscine en bord de mer" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/maison-var-provence+alpes+cote+d+azur-france/98255163/?priceMin=1000000&amp;priceMax=1700000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/1cKOxlaefReZurqGxUlTrw3_SBLJc_9j4TAQb8FCEh121H-LXjmNeb2aeGZ6RYHP_jmPZs7FQypnvCpSXs4zVDpv0RYW1vstePX4Z0Q=rj-w900-h675-n-l80" alt="" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/maison-var-provence+alpes+cote+d+azur-france/98255163/?priceMin=1000000&amp;priceMax=1700000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/bF3USt9iRsADWDZDOdHY2w1NYjElHMPHVSuDF-ZowFpTU9Ujmfb9d4p4s1ZJKYJWP3vO85jrgR2ix79J-ey8JABkaBabnU0WtoVF6A=rj-w900-h675-n-l80" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">5</p>
         <p class="ref">Coldwell Banker St Barth Azur — Le Figaro Propriétés, réf. 98255163</p>
         <h2><a href="https://proprietes.lefigaro.fr/annonces/maison-var-provence+alpes+cote+d+azur-france/98255163/?priceMin=1000000&amp;priceMax=1700000" target="_blank" rel="noopener noreferrer">Maison avec piscine en bord de mer</a></h2>
         <p class="lieu">Rayol-Canadel-sur-Mer · Var (83)</p>
@@ -206,6 +256,7 @@
 
         <blockquote>Après Bormes-les-Mimosas.</blockquote>
         
+        
 
         <a class="lien" href="https://proprietes.lefigaro.fr/annonces/maison-var-provence+alpes+cote+d+azur-france/98255163/?priceMin=1000000&amp;priceMax=1700000" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
       </div>
@@ -213,6 +264,7 @@
     <article class="fiche">
       <div class="media"><a class="photo" href="https://www.seloger.com/annonce/achat/provence-alpes-cote-d-azur/var-83/saint-raphael-83700/26164VWGRV7G" target="_blank" rel="noopener noreferrer"><img src="https://mms.seloger.com/3/4/f/8/34f8e695-17a3-4ee9-b45b-c94d81e79f9f.jpg?ci_seal=23c2659421c1e64efb3ac42c4e054e3b1009d40a" alt="Villa rénovée avec piscine et vue mer" loading="lazy"></a><a class="photo mini" href="https://www.seloger.com/annonce/achat/provence-alpes-cote-d-azur/var-83/saint-raphael-83700/26164VWGRV7G" target="_blank" rel="noopener noreferrer"><img src="https://mms.seloger.com/6/a/0/b/6a0bb2a7-a8e7-4571-8b20-f3e86abadd7d.jpg?ci_seal=824e12acf07a248f5fc600e3a2a9f9802537104e" alt="" loading="lazy"></a><a class="photo mini" href="https://www.seloger.com/annonce/achat/provence-alpes-cote-d-azur/var-83/saint-raphael-83700/26164VWGRV7G" target="_blank" rel="noopener noreferrer"><img src="https://mms.seloger.com/1/d/b/a/1dbac27f-86fa-46d1-bc4c-73b525cf21b4.jpg?ci_seal=03f602d7555c56b53b0cf93f2ae1c42d7d16b2d2" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">6</p>
         <p class="ref">3% Immobilier Prestige — SeLoger, réf. 26164VWGRV7G</p>
         <h2><a href="https://www.seloger.com/annonce/achat/provence-alpes-cote-d-azur/var-83/saint-raphael-83700/26164VWGRV7G" target="_blank" rel="noopener noreferrer">Villa rénovée avec piscine et vue mer</a></h2>
         <p class="lieu">Saint-Raphaël — Boulouris · Var (83)</p>
@@ -227,6 +279,7 @@
 
         <blockquote>Peut-être pas de vue mer.</blockquote>
         
+        <div class="rdv"><p class="quand">Mardi 22 septembre, 11h00</p><p class="ou">Devant la Poste de Boulouris</p><p class="qui">Jérémi Michaux · <a href="tel:+33620410973">06 20 41 09 73</a></p></div>
 
         <a class="lien" href="https://www.seloger.com/annonce/achat/provence-alpes-cote-d-azur/var-83/saint-raphael-83700/26164VWGRV7G" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
       </div>
@@ -234,6 +287,7 @@
     <article class="fiche">
       <div class="media"><a class="photo" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/100823851/" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/3EYiYSf3hw5Nhc16s-z1vzrNOBshTre0qI3X-V9YPzi0i4rEdgcLQoNdrWHse8YWyLylV1tA9VrXajIkCgJwD3eTGBF1pCVhUK5y=rj-w900-h675-n-l80" alt="Villa provençale avec piscine et vue mer" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/100823851/" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/tEjTfSvz4wNz4UY1ivta1OsVECO9f-o6_V7NLjxtaYaKpQOq4tRGwSRQo20U_CyLKyyk0WegJS80s7cfc60Vah7lxVxzFr3FP5II9Q=rj-w900-h675-n-l80" alt="" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/100823851/" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/58ycxLIIbsK3mlfS0dcyo8HSxPXIDWhFg-wJPDfoqIBWJkCynU5KCOp7Dx3EEUxleKkUswfRIFZzK7gnF1W97kwVaZ_QU9uP6CPmNQ=rj-w900-h675-n-l80" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">7</p>
         <p class="ref">Millesime Immobilier Agay — Le Figaro Propriétés, réf. 100823851</p>
         <h2><a href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/100823851/" target="_blank" rel="noopener noreferrer">Villa provençale avec piscine et vue mer</a></h2>
         <p class="lieu">Agay · Var (83)</p>
@@ -248,6 +302,7 @@
 
         <blockquote>À voir si on peut baisser le prix de 200 k€.</blockquote>
         
+        
 
         <a class="lien" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/100823851/" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
       </div>
@@ -255,6 +310,7 @@
     <article class="fiche">
       <div class="media"><a class="photo" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3175872602" target="_blank" rel="noopener noreferrer"><img src="https://img.leboncoin.fr/api/v1/lbcpb1/images/9c/e8/12/9ce81278f7536c6b45f57789a71aa3e2753d69d2.jpg?rule=ad-image" alt="Maison en position dominante, vue mer" loading="lazy"></a><a class="photo mini" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3175872602" target="_blank" rel="noopener noreferrer"><img src="https://img.leboncoin.fr/api/v1/lbcpb1/images/69/cb/d7/69cbd7996fef99c67eb2e5aa23556f6156c5ac47.jpg?rule=ad-image" alt="" loading="lazy"></a><a class="photo mini" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3175872602" target="_blank" rel="noopener noreferrer"><img src="https://img.leboncoin.fr/api/v1/lbcpb1/images/34/42/ab/3442ab826cdd65f47a259f2e8979aa4bf1be5dc0.jpg?rule=ad-image" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">8</p>
         <p class="ref">Agence ANGELI — leboncoin, réf. 3175872602</p>
         <h2><a href="https://www.leboncoin.fr/ad/ventes_immobilieres/3175872602" target="_blank" rel="noopener noreferrer">Maison en position dominante, vue mer</a></h2>
         <p class="lieu">Saint-Aygulf · Fréjus — Var (83)</p>
@@ -267,8 +323,9 @@
 
         <dl class="carac"><div><dt>Prix / m²</dt><dd>8 094 € / m²</dd></div><div><dt>Surface</dt><dd>160 m²</dd></div><div><dt>Terrain</dt><dd>1 271 m²</dd></div><div><dt>Pièces</dt><dd>4</dd></div><div><dt>Chambres</dt><dd>3</dd></div><div><dt>Piscine</dt><dd class="vide">—</dd></div><div><dt>DPE</dt><dd class="vide">—</dd></div><div><dt>Vue</dt><dd>Mer et montagnes, sans vis-à-vis</dd></div></dl>
 
-        <blockquote>De plain-pied, deux suites parentales, plus une chambre indépendante à l&#x27;extérieur.</blockquote>
+        <blockquote>Visite groupée avec les deux autres biens Angeli. De plain-pied, deux suites parentales, plus une chambre indépendante à l&#x27;extérieur.</blockquote>
         
+        <div class="rdv"><p class="quand">Mercredi 23 septembre, 14h00<span class="apre">à confirmer</span></p><p class="qui"><a href="tel:+33494445000">04 94 44 50 00</a></p></div>
 
         <a class="lien" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3175872602" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
       </div>
@@ -276,6 +333,7 @@
     <article class="fiche">
       <div class="media"><a class="photo" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3230333763" target="_blank" rel="noopener noreferrer"><img src="https://img.leboncoin.fr/api/v1/lbcpb1/images/93/a1/97/93a197f4307b42c80e7195d035a03cc6d35e71d8.jpg?rule=ad-image" alt="Villa avec piscine et vue panoramique" loading="lazy"></a><a class="photo mini" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3230333763" target="_blank" rel="noopener noreferrer"><img src="https://img.leboncoin.fr/api/v1/lbcpb1/images/4a/0e/50/4a0e505a57c09986aa2047b40d881f314279c9b7.jpg?rule=ad-image" alt="" loading="lazy"></a><a class="photo mini" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3230333763" target="_blank" rel="noopener noreferrer"><img src="https://img.leboncoin.fr/api/v1/lbcpb1/images/38/ae/7d/38ae7d0867c8fdcbc652572a9af5a67b97f5a809.jpg?rule=ad-image" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">9</p>
         <p class="ref">Century 21 Sud Habitat — leboncoin, réf. 3230333763</p>
         <h2><a href="https://www.leboncoin.fr/ad/ventes_immobilieres/3230333763" target="_blank" rel="noopener noreferrer">Villa avec piscine et vue panoramique</a></h2>
         <p class="lieu">Saint-Aygulf · Fréjus — Var (83)</p>
@@ -290,13 +348,84 @@
 
         <blockquote>En exclusivité. Deux appartements indépendants, possibilité d&#x27;extension.</blockquote>
         
+        <div class="rdv"><p class="quand sans">Pas encore de rendez-vous</p><p class="qui">Amandine Josier · <a href="tel:+33660025081">06 60 02 50 81</a></p></div>
 
         <a class="lien" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3230333763" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
+      </div>
+    </article>
+    <article class="fiche">
+      <div class="media"><a class="photo" href="https://www.millesimeimmobilier.com/fiches/4-40-198_61357027/villa-neo-provencale-avec-vue-mer-dans-un-domaine-prive.html" target="_blank" rel="noopener noreferrer"><img src="https://www.millesimeimmobilier.com/office5/millesime_03022026/catalog/images/pr_p/6/1/3/5/7/0/2/7/61357027r.jpg" alt="Villa néo-provençale dans un domaine privé" loading="lazy"></a><a class="photo mini" href="https://www.millesimeimmobilier.com/fiches/4-40-198_61357027/villa-neo-provencale-avec-vue-mer-dans-un-domaine-prive.html" target="_blank" rel="noopener noreferrer"><img src="https://www.millesimeimmobilier.com/office5/millesime_03022026/catalog/images/pr_p/6/1/3/5/7/0/2/7/61357027a.jpg" alt="" loading="lazy"></a><a class="photo mini" href="https://www.millesimeimmobilier.com/fiches/4-40-198_61357027/villa-neo-provencale-avec-vue-mer-dans-un-domaine-prive.html" target="_blank" rel="noopener noreferrer"><img src="https://www.millesimeimmobilier.com/office5/millesime_03022026/catalog/images/pr_p/6/1/3/5/7/0/2/7/61357027b.jpg" alt="" loading="lazy"></a></div>
+      <div class="infos">
+        <p class="repere">10</p>
+        <p class="ref">Millesime Immobilier Agay — Millesime Immobilier, réf. 654</p>
+        <h2><a href="https://www.millesimeimmobilier.com/fiches/4-40-198_61357027/villa-neo-provencale-avec-vue-mer-dans-un-domaine-prive.html" target="_blank" rel="noopener noreferrer">Villa néo-provençale dans un domaine privé</a></h2>
+        <p class="lieu">Agay · Var (83)</p>
+
+        <p class="prix">
+          <span class="montant">1 150 000 €</span>
+          <span class="note">5 897 € / m²</span>
+          
+        </p>
+
+        <dl class="carac"><div><dt>Prix / m²</dt><dd>5 897 € / m²</dd></div><div><dt>Surface</dt><dd>195 m²</dd></div><div><dt>Terrain</dt><dd>1 310 m²</dd></div><div><dt>Pièces</dt><dd>7</dd></div><div><dt>Chambres</dt><dd>4</dd></div><div><dt>Piscine</dt><dd>Oui, électrolyse au sel</dd></div><div><dt>DPE</dt><dd>B / GES A</dd></div><div><dt>Vue</dt><dd>Dégagée et mer, sud-ouest</dd></div></dl>
+
+        <blockquote>Visite groupée avec l&#x27;autre bien Millesime : un seul rendez-vous pour les deux. Domaine privé, construite en 2005, pompe à chaleur et panneaux solaires.</blockquote>
+        
+        <div class="rdv"><p class="quand">Mardi 22 septembre, 9h30</p><p class="qui">Brandon Baraud · <a href="tel:+33494820260">04 94 82 02 60</a> · <a href="tel:+33615888871">06 15 88 88 71</a></p></div>
+
+        <a class="lien" href="https://www.millesimeimmobilier.com/fiches/4-40-198_61357027/villa-neo-provencale-avec-vue-mer-dans-un-domaine-prive.html" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
+      </div>
+    </article>
+    <article class="fiche">
+      <div class="media"><a class="photo" href="https://www.saint-aygulf-immobilier.com/3185-saint-aygulf-villa-provencale-vue-mer.html" target="_blank" rel="noopener noreferrer"><img src="https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/5226e9d086b8256979e8acf0b9911c49/photo_7b57150ba9496b5629c88dd3a0858749.jpg" alt="Villa provençale avec vue mer panoramique" loading="lazy"></a><a class="photo mini" href="https://www.saint-aygulf-immobilier.com/3185-saint-aygulf-villa-provencale-vue-mer.html" target="_blank" rel="noopener noreferrer"><img src="https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/5226e9d086b8256979e8acf0b9911c49/photo_c81562454b8cce0a11f9d611b8dda2b7.jpg" alt="" loading="lazy"></a><a class="photo mini" href="https://www.saint-aygulf-immobilier.com/3185-saint-aygulf-villa-provencale-vue-mer.html" target="_blank" rel="noopener noreferrer"><img src="https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/5226e9d086b8256979e8acf0b9911c49/photo_3da5550f3bb29ffffa570eefdedce765.jpg" alt="" loading="lazy"></a></div>
+      <div class="infos">
+        <p class="repere">11</p>
+        <p class="ref">Agence ANGELI — Angeli Immobilier, réf. 7168</p>
+        <h2><a href="https://www.saint-aygulf-immobilier.com/3185-saint-aygulf-villa-provencale-vue-mer.html" target="_blank" rel="noopener noreferrer">Villa provençale avec vue mer panoramique</a></h2>
+        <p class="lieu">Saint-Aygulf · Fréjus — Var (83)</p>
+
+        <p class="prix">
+          <span class="montant">950 000 €</span>
+          <span class="note">7 037 € / m²</span>
+          
+        </p>
+
+        <dl class="carac"><div><dt>Prix / m²</dt><dd>7 037 € / m²</dd></div><div><dt>Surface</dt><dd>135 m²</dd></div><div><dt>Terrain</dt><dd>960 m²</dd></div><div><dt>Pièces</dt><dd>6</dd></div><div><dt>Chambres</dt><dd>4</dd></div><div><dt>Piscine</dt><dd>Oui, avec pool house</dd></div><div><dt>DPE</dt><dd class="vide">—</dd></div><div><dt>Vue</dt><dd>Mer panoramique</dd></div></dl>
+
+        <blockquote>Visite groupée avec les deux autres biens Angeli. Sur trois niveaux, loggia à l&#x27;étage, nombreuses possibilités selon l&#x27;annonce.</blockquote>
+        
+        <div class="rdv"><p class="quand">Mercredi 23 septembre, 14h00<span class="apre">à confirmer</span></p><p class="qui"><a href="tel:+33494445000">04 94 44 50 00</a></p></div>
+
+        <a class="lien" href="https://www.saint-aygulf-immobilier.com/3185-saint-aygulf-villa-provencale-vue-mer.html" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
+      </div>
+    </article>
+    <article class="fiche">
+      <div class="media"><a class="photo" href="https://www.saint-aygulf-immobilier.com/2871-saint-aygulf-vue-mer-panoramique-prestige.html" target="_blank" rel="noopener noreferrer"><img src="https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/4f93ebf5404bce01e094636323ada256/photo_f60fc913d85a75c7e1c2ce5d428f7388.jpg" alt="Villa de plain-pied rénovée, vue mer panoramique" loading="lazy"></a><a class="photo mini" href="https://www.saint-aygulf-immobilier.com/2871-saint-aygulf-vue-mer-panoramique-prestige.html" target="_blank" rel="noopener noreferrer"><img src="https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/4f93ebf5404bce01e094636323ada256/photo_d42277d7ce00526653fd4db59ed852ad.jpg" alt="" loading="lazy"></a><a class="photo mini" href="https://www.saint-aygulf-immobilier.com/2871-saint-aygulf-vue-mer-panoramique-prestige.html" target="_blank" rel="noopener noreferrer"><img src="https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/4f93ebf5404bce01e094636323ada256/photo_c11b6b6c17ea0144d0cbb1b355863236.jpg" alt="" loading="lazy"></a></div>
+      <div class="infos">
+        <p class="repere">12</p>
+        <p class="ref">Agence ANGELI — Angeli Immobilier, réf. 6925</p>
+        <h2><a href="https://www.saint-aygulf-immobilier.com/2871-saint-aygulf-vue-mer-panoramique-prestige.html" target="_blank" rel="noopener noreferrer">Villa de plain-pied rénovée, vue mer panoramique</a></h2>
+        <p class="lieu">Saint-Aygulf · Fréjus — Var (83)</p>
+
+        <p class="prix">
+          <span class="montant">1 050 000 €</span>
+          <span class="note">9 545 € / m²</span>
+          
+        </p>
+
+        <dl class="carac"><div><dt>Prix / m²</dt><dd>9 545 € / m²</dd></div><div><dt>Surface</dt><dd>110 m²</dd></div><div><dt>Terrain</dt><dd>1 253 m²</dd></div><div><dt>Pièces</dt><dd>4</dd></div><div><dt>Chambres</dt><dd>3</dd></div><div><dt>Piscine</dt><dd>Oui, 10 x 4,5 m avec pool house</dd></div><div><dt>DPE</dt><dd class="vide">—</dd></div><div><dt>Vue</dt><dd>Mer panoramique</dd></div></dl>
+
+        <blockquote>Visite groupée avec les deux autres biens Angeli. Plain-pied entièrement rénové, dépendance transformable en studio, terrain à deux accès avec possibilité d&#x27;agrandissement.</blockquote>
+        
+        <div class="rdv"><p class="quand">Mercredi 23 septembre, 14h00<span class="apre">à confirmer</span></p><p class="qui"><a href="tel:+33494445000">04 94 44 50 00</a></p></div>
+
+        <a class="lien" href="https://www.saint-aygulf-immobilier.com/2871-saint-aygulf-vue-mer-panoramique-prestige.html" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
       </div>
     </article>
     <article class="fiche rouge">
       <div class="media"><a class="photo" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/96300379/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/1hPhVUWvSDLELz6Yoo7z7MgV_lBAwwNazITkmN_WDUtN63Utdolpznj8Dplys419CexzxN48RMN5On7feU8M0Z3vpH_-5OtTPlWl16k=rj-w900-h675-n-l80" alt="Villa avec jardin et terrasse" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/96300379/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/qGaldVGy4lZg6FMdwuG6T-0Jzg7_agH8K2tKg0hQOwvtCTJbOpW3HszuDwmXgqL5r74w1ZHtZqbZUyMS2jSKr5CUnaIyu8VTO_dHkQ=rj-w900-h675-n-l80" alt="" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/96300379/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/rMcOM9h7fHd4KGZRYjtX7X1MaOZOiFLa1alUsjmF6-A_2YrIrfT6hTsNZHacIKorVvEmbLhyp2-BVjXGvUNbqqe4VrQSltbFf7pN_A=rj-w900-h675-n-l80" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">A</p>
         <p class="ref">Millesime Immobilier Agay — Le Figaro Propriétés, réf. 96300379</p>
         <h2><a href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/96300379/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer">Villa avec jardin et terrasse</a></h2>
         <p class="lieu">Agay · Var (83)</p>
@@ -311,6 +440,7 @@
 
         <blockquote>Pas de piscine mais piscinable selon l&#x27;annonce — à voir, et surtout où.</blockquote>
         
+        
 
         <a class="lien" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/96300379/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
       </div>
@@ -318,6 +448,7 @@
     <article class="fiche rouge">
       <div class="media"><a class="photo" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/89126557/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/2MPoKeWKi0KyCTgoQISIwqX7XtvYUJr-8yvC_lvY1d0rKAHYBzAoXIQTnQfedM2fUoZJZXbBGmuqoXdzBcZFfiU3F8tL_N1Ta4307g=rj-w900-h675-n-l80" alt="Villa avec piscine et terrasse" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/89126557/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/sIJ0tTqIKYYZUGR01BaQmVSAVeLipFvk0ImL-GuG3q58oeefG-KLcMUWPjnt5u-pIgVv2uaJDp--3elr_C_CnnDCBHUCMMbyXkdxeQ=rj-w900-h675-n-l80" alt="" loading="lazy"></a><a class="photo mini" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/89126557/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer"><img src="https://lh3.googleusercontent.com/Zq8oE755ti-pbOvyHVGWMSrCVKmOVr37PE8U27bqpcKd7Dof9ARl9lEzoh-ndw2TxwpwIASrGYTfpuN1I1_8xvqcJf44lr1Lo7Vm5EY=rj-w900-h675-n-l80" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">B</p>
         <p class="ref">Agence du Cap Immogolf — Le Figaro Propriétés, réf. 89126557</p>
         <h2><a href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/89126557/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer">Villa avec piscine et terrasse</a></h2>
         <p class="lieu">Saint-Raphaël — Boulouris · Var (83)</p>
@@ -332,6 +463,7 @@
 
         <blockquote>À Bouloris. Mais la vue mer semble limitée.</blockquote>
         
+        
 
         <a class="lien" href="https://proprietes.lefigaro.fr/annonces/villa-var-provence+alpes+cote+d+azur-france/89126557/?priceMin=800000&amp;priceMax=1800000" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
       </div>
@@ -339,6 +471,7 @@
     <article class="fiche rouge">
       <div class="media"><a class="photo" href="https://cotedazurestate.com/fr/propriete/vente+maison+saint-raphael+saint-raphael-boulouris-villa-de-charme-vue-mer-7-pieces-a-vendre+82558858" target="_blank" rel="noopener noreferrer"><img src="https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/88e2381670ee6be9ad553f6c77e1bbaf.webp" alt="Bastide de charme avec vue mer panoramique" loading="lazy"></a><a class="photo mini" href="https://cotedazurestate.com/fr/propriete/vente+maison+saint-raphael+saint-raphael-boulouris-villa-de-charme-vue-mer-7-pieces-a-vendre+82558858" target="_blank" rel="noopener noreferrer"><img src="https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/f1ed2e3eae1b6f26703e41d705cf777d.webp" alt="" loading="lazy"></a><a class="photo mini" href="https://cotedazurestate.com/fr/propriete/vente+maison+saint-raphael+saint-raphael-boulouris-villa-de-charme-vue-mer-7-pieces-a-vendre+82558858" target="_blank" rel="noopener noreferrer"><img src="https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/e1c69c008c6a33f9f3553463d4dc3178.webp" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">C</p>
         <p class="ref">BIRD Saint-Raphaël — Côte d&#x27;Azur Estate, réf. 82558858</p>
         <h2><a href="https://cotedazurestate.com/fr/propriete/vente+maison+saint-raphael+saint-raphael-boulouris-villa-de-charme-vue-mer-7-pieces-a-vendre+82558858" target="_blank" rel="noopener noreferrer">Bastide de charme avec vue mer panoramique</a></h2>
         <p class="lieu">Saint-Raphaël — Boulouris · Var (83)</p>
@@ -353,6 +486,7 @@
 
         <blockquote>Dépasse le budget initial.</blockquote>
         
+        
 
         <a class="lien" href="https://cotedazurestate.com/fr/propriete/vente+maison+saint-raphael+saint-raphael-boulouris-villa-de-charme-vue-mer-7-pieces-a-vendre+82558858" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
       </div>
@@ -360,6 +494,7 @@
     <article class="fiche rouge">
       <div class="media"><a class="photo" href="https://cotedazurestate.com/fr/propriete/vente+appartement+saint-raphael+appartement-villa-4-pieces-vue-mer-d-exception-a-saint-raphael+86141231" target="_blank" rel="noopener noreferrer"><img src="https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/c36fdafa4ca03e5f5914fcbb621142f9.webp" alt="Appartement-villa sur le toit, vue mer" loading="lazy"></a><a class="photo mini" href="https://cotedazurestate.com/fr/propriete/vente+appartement+saint-raphael+appartement-villa-4-pieces-vue-mer-d-exception-a-saint-raphael+86141231" target="_blank" rel="noopener noreferrer"><img src="https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/f35f966493d73486138695ef0988b5ff.webp" alt="" loading="lazy"></a><a class="photo mini" href="https://cotedazurestate.com/fr/propriete/vente+appartement+saint-raphael+appartement-villa-4-pieces-vue-mer-d-exception-a-saint-raphael+86141231" target="_blank" rel="noopener noreferrer"><img src="https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/a2e54b5eb0cbbb31a53c4803149981af.webp" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">D</p>
         <p class="ref">Azur Astoria — Groupe BIRD — Côte d&#x27;Azur Estate, réf. 86141231</p>
         <h2><a href="https://cotedazurestate.com/fr/propriete/vente+appartement+saint-raphael+appartement-villa-4-pieces-vue-mer-d-exception-a-saint-raphael+86141231" target="_blank" rel="noopener noreferrer">Appartement-villa sur le toit, vue mer</a></h2>
         <p class="lieu">Saint-Raphaël · Var (83)</p>
@@ -374,6 +509,7 @@
 
         <blockquote>Appartement « villa sur le toit ».</blockquote>
         
+        
 
         <a class="lien" href="https://cotedazurestate.com/fr/propriete/vente+appartement+saint-raphael+appartement-villa-4-pieces-vue-mer-d-exception-a-saint-raphael+86141231" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
       </div>
@@ -381,6 +517,7 @@
     <article class="fiche rouge">
       <div class="media"><a class="photo" href="https://cotedazurestate.com/fr/propriete/vente+maison+saint-aygulf+87185556" target="_blank" rel="noopener noreferrer"><img src="https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/d7c7000c175498a878bc6c6fd167c854.webp" alt="Villa contemporaine rénovée, vue mer" loading="lazy"></a><a class="photo mini" href="https://cotedazurestate.com/fr/propriete/vente+maison+saint-aygulf+87185556" target="_blank" rel="noopener noreferrer"><img src="https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/5940ebc90589ef423ed26c9a67758db4.webp" alt="" loading="lazy"></a><a class="photo mini" href="https://cotedazurestate.com/fr/propriete/vente+maison+saint-aygulf+87185556" target="_blank" rel="noopener noreferrer"><img src="https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/6586e2b9b0a68391b2313fbd39f8dcca.webp" alt="" loading="lazy"></a></div>
       <div class="infos">
+        <p class="repere">E</p>
         <p class="ref">BIRD Saint-Raphaël — Côte d&#x27;Azur Estate, réf. 87185556</p>
         <h2><a href="https://cotedazurestate.com/fr/propriete/vente+maison+saint-aygulf+87185556" target="_blank" rel="noopener noreferrer">Villa contemporaine rénovée, vue mer</a></h2>
         <p class="lieu">Saint-Aygulf · Var (83)</p>
@@ -394,6 +531,7 @@
         <dl class="carac"><div><dt>Prix / m²</dt><dd>9 141 € / m²</dd></div><div><dt>Surface</dt><dd>163 m²</dd></div><div><dt>Terrain</dt><dd>1 309 m²</dd></div><div><dt>Pièces</dt><dd>4</dd></div><div><dt>Chambres</dt><dd>3</dd></div><div><dt>Piscine</dt><dd>Oui, au sel et chauffée (8 x 4 m)</dd></div><div><dt>DPE</dt><dd class="vide">—</dd></div><div><dt>Vue</dt><dd>Mer et verdure, sud-est</dd></div></dl>
 
         <blockquote>Vue mer limitée.</blockquote>
+        
         
 
         <a class="lien" href="https://cotedazurestate.com/fr/propriete/vente+maison+saint-aygulf+87185556" target="_blank" rel="noopener noreferrer">Voir l'annonce</a>
