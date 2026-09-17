@@ -98,7 +98,7 @@ def fiche(b, repere):
         ailleurs = f'<p class="ailleurs">Aussi publié&nbsp;: {liens}</p>' 
     classe = "fiche rouge" if b.get("rouge") else "fiche"
     return f"""
-    <article class="{classe}">
+    <article class="{classe}" id="bien-{escape(b["ref"], quote=True)}">
       <div class="media">{vignettes}</div>
       <div class="infos">
         <p class="repere">{escape(repere)}</p>
@@ -165,14 +165,36 @@ def calendrier(biens, reperes):
     colonnes = []
     for j in FENETRE:
         libelle = JOURS[_date(AN_FENETRE, MOIS_FENETRE, j).weekday()]
+        # Un même créneau chez une même agence = une seule ligne : les visites
+        # groupées se lisent d'un bloc (« Maisons 2 et 10 »).
+        groupes = []
+        for minutes, _rang, hhmm, rep, b in sorted(par_jour[j]):
+            cle = (minutes, b["agence"])
+            if groupes and groupes[-1][0] == cle:
+                groupes[-1][1].append((rep, b))
+            else:
+                groupes.append((cle, [(rep, b)], hhmm))
+
         entrees = []
-        for _, _rang, hhmm, rep, b in sorted(par_jour[j]):
-            lieu = b.get("rdv_lieu") or b["commune"].split(" — ")[0]
-            apre = "" if b.get("rdv_confirme", True) else '<span class="apre">à confirmer</span>'
-            rouge = " rouge" if b.get("rouge") else ""
+        for _cle, membres, hhmm in groupes:
+            liens = []
+            for rep, b in membres:
+                cls = ' class="r"' if b.get("rouge") else ""
+                cible = escape(b["ref"], quote=True)
+                liens.append(f'<a href="#bien-{cible}"{cls}>{escape(rep)}</a>')
+            if len(liens) == 1:
+                label = "Maison " + liens[0]
+            else:
+                label = "Maisons " + ", ".join(liens[:-1]) + " et " + liens[-1]
+
+            premier = membres[0][1]
+            lieu = next((b.get("rdv_lieu") for _, b in membres if b.get("rdv_lieu")),
+                        None) or premier["commune"].split(" — ")[0]
+            apre = ("" if all(b.get("rdv_confirme", True) for _, b in membres)
+                    else '<span class="apre">à confirmer</span>')
             entrees.append(
-                f'<li class="visite{rouge}"><span class="h">{escape(hhmm)}</span>'
-                f'<span class="no">{escape(rep)}</span>'
+                f'<li class="visite"><span class="h">{escape(hhmm)}</span>'
+                f'<span class="no">{label}</span>'
                 f'<span class="lieu">{escape(lieu)}{apre}</span></li>')
         corps = ("<ul>" + "".join(entrees) + "</ul>") if entrees else \
                 '<p class="rien">—</p>'
@@ -228,14 +250,17 @@ CSS = """
     padding:7px 0;border-top:1px solid var(--trait);font-size:.9rem;}
   .visite:first-child{border-top:none;padding-top:0;}
   .visite .h{font-weight:600;font-variant-numeric:tabular-nums;min-width:3.2em;}
-  .visite .no{font-family:"Fraunces",Georgia,serif;font-size:1.05rem;
-    color:var(--pin);min-width:1.1em;}
-  .visite.rouge .no{color:#A32E28;}
+  .visite .no{flex:1 1 auto;color:var(--gris);font-size:.86rem;}
+  .visite .no a{font-family:"Fraunces",Georgia,serif;font-size:1.02rem;
+    color:var(--pin);text-decoration:none;border-bottom:1px solid var(--trait);
+    padding:0 1px;}
+  .visite .no a:hover,.visite .no a:focus-visible{border-bottom-color:var(--pin);}
+  .visite .no a.r{color:#A32E28;}
   .visite .lieu{color:var(--gris);flex:1 1 100%;margin-left:3.2em;
     font-size:.84rem;line-height:1.3;}
   .jour .rien{margin:0;color:var(--trait);font-size:1rem;}
 
-  .fiche{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);
+  .fiche{scroll-margin-top:18px;display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);
     gap:36px;padding:44px 0;border-bottom:1px solid var(--trait);}
   .media{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-content:start;}
   .photo{display:block;background:var(--craie-fonce);border-radius:2px;overflow:hidden;
