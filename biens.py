@@ -205,7 +205,7 @@ BIENS = [
          "https://mms.seloger.com/1/d/b/a/1dbac27f-86fa-46d1-bc4c-73b525cf21b4.jpg?ci_seal=03f602d7555c56b53b0cf93f2ae1c42d7d16b2d2",
        ],
        photo_fichier=None),
-  dict(ref="100823851", titre="Villa provençale avec piscine et vue mer",
+  dict(ref="100823851", rouge=True, en_place=True, titre="Villa provençale avec piscine et vue mer",
        commune="Agay", secteur="Var (83)",
        agence="Millesime Immobilier Agay", source="Le Figaro Propriétés",
        prix=1790000, prixM2="7 991 € / m²",
