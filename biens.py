@@ -237,7 +237,7 @@ BIENS = [
        ],
        photo_fichier=None),
 
-  dict(ref="3230333763", contact="Amandine Josier", tel=["06 60 02 50 81"],
+  dict(ref="3230333763", rouge=True, en_place=True, contact="Amandine Josier", tel=["06 60 02 50 81"],
        titre="Villa avec piscine et vue panoramique",
        commune="Saint-Aygulf", secteur="Fréjus — Var (83)",
        agence="Century 21 Sud Habitat", source="leboncoin",
