@@ -287,14 +287,13 @@ BIENS = [
        ],
        photo_fichier=None),
 
-  dict(ref="6925", titre="Villa de plain-pied rénovée, vue mer panoramique",
+  dict(ref="6925", rouge=True, en_place=True, titre="Villa de plain-pied rénovée, vue mer panoramique",
        commune="Saint-Aygulf", secteur="Fréjus — Var (83)",
        agence="Agence ANGELI", source="Angeli Immobilier",
        prix=1050000, prixM2="9 545 € / m²", negociation=None,
        surface="110 m²", terrain="1 253 m²", pieces="4", chambres="3",
        piscine="Oui, 10 x 4,5 m avec pool house", dpe=None, vue="Mer panoramique",
        commentaire="Visite groupée avec les deux autres biens Angeli. Plain-pied entièrement rénové, dépendance transformable en studio, terrain à deux accès avec possibilité d'agrandissement.",
-       rdv="Mercredi 23 septembre, 14h00", rdv_confirme=False,
        tel=["04 94 44 50 00"],
        url="https://www.saint-aygulf-immobilier.com/2871-saint-aygulf-vue-mer-panoramique-prestige.html",
        photos=[
@@ -303,9 +302,23 @@ BIENS = [
          "https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/4f93ebf5404bce01e094636323ada256/photo_c11b6b6c17ea0144d0cbb1b355863236.jpg",
        ],
        photo_fichier=None),
+  dict(ref="2571R8MF8B69", titre="Villa vue mer avec piscine, Agay",
+       commune="Agay", secteur="Saint-Raphaël — Var (83)",
+       agence="Agence du Rastel d'Agay", source="SeLoger",
+       prix=1280000, prixM2="8 591 € / m²", negociation=None,
+       surface="149 m²", terrain="1 500 m²", pieces="5", chambres="4",
+       piscine="Oui", dpe="D / GES E", vue="Mer depuis trois chambres et la terrasse",
+       commentaire="Exclusivité. Terrain arboré de 1 500 m², garage de 24 m², terrasse de 35 m². Construite en 1970, chauffage gaz.",
+       url="https://www.seloger.com/annonce/achat/provence-alpes-cote-d-azur/var-83/saint-raphael-83700/2571R8MF8B69",
+       photos=[
+         "https://mms.seloger.com/5/3/f/3/53f314d1-9ccd-4e26-be46-d11cca494c6a.jpg?ci_seal=af77b9dccf08d37c9eba31433b615280c2e4b4ef",
+         "https://mms.seloger.com/4/4/e/6/44e6e4dd-b482-483a-8148-fe6d726a55b2.jpg?ci_seal=d876db3655c42775548919923001823587cd0b4c",
+         "https://mms.seloger.com/0/1/c/0/01c08ad6-6d46-4ba8-b329-92009544c682.jpg?ci_seal=4fb3e1bdc32610037f1433cedb4f0f6521138c3f",
+       ],
+       photo_fichier=None),
 ]
 
-MAJ = "11 septembre 2026"
+MAJ = "18 septembre 2026"
 
 # Adresse publique de la page. Sert aux balises de partage (WhatsApp,
 # iMessage, Slack…) qui exigent des URLs absolues.
