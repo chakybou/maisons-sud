@@ -306,7 +306,7 @@ BIENS = [
          "https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/4f93ebf5404bce01e094636323ada256/photo_c11b6b6c17ea0144d0cbb1b355863236.jpg",
        ],
        photo_fichier=None),
-  dict(ref="2571R8MF8B69", numero="13", titre="Villa vue mer avec piscine, Agay",
+  dict(ref="2571R8MF8B69", numero="13", rouge=True, en_place=True, titre="Villa vue mer avec piscine, Agay",
        commune="Agay", secteur="Saint-Raphaël — Var (83)",
        agence="Agence du Rastel d'Agay", source="SeLoger",
        prix=1280000, prixM2="8 591 € / m²", negociation=None,
