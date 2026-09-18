@@ -11,6 +11,10 @@ Champ `photos`    : 1 à 3 URLs de photos sur le serveur de l'annonce (utilisée
                     à nouveau sur l'annonce.
 Champ `autres_annonces` : liste optionnelle de (libellé, url) — le même bien publié
                     ailleurs. Omettre le champ si le bien n'est que sur une annonce.
+Champ `numero`    : le repère affiché (chiffre pour les biens suivis, lettre pour
+                    les rouges relégués). Il est FIGÉ ici : un bien garde son
+                    repère même si la liste change. Un bien sans `numero` en
+                    reçoit un automatiquement, à la suite des existants.
 Champ `rouge`     : True = fiche affichée en rouge et reléguée en fin de page.
                     Omettre le champ (ou False) pour une fiche normale.
 Champ `en_place`  : à utiliser avec `rouge` — la fiche reste rouge mais garde
@@ -25,7 +29,7 @@ Champ `photo_fichier` : nom du fichier dans photos/ (utilisé par le PDF, qui do
 """
 
 BIENS = [
-  dict(ref="103041457", rdv="Mardi 22 septembre, 12h30",
+  dict(ref="103041457", numero="1", rdv="Mardi 22 septembre, 12h30",
        titre="Villa avec piscine en bord de mer",
        commune="Saint-Aygulf", secteur="Var (83)",
        agence="Côte d'Azur Sotheby's International Realty", source="Le Figaro Propriétés",
@@ -42,7 +46,7 @@ BIENS = [
        ],
        photo_fichier="103041457.webp"),
 
-  dict(ref="107859973", rdv="Mardi 22 septembre, 9h30",
+  dict(ref="107859973", numero="2", rdv="Mardi 22 septembre, 9h30",
        contact="Brandon Baraud", tel=["04 94 82 02 60", "06 15 88 88 71"],
        titre="Villa avec piscine et jardin",
        commune="Agay", secteur="Var (83)",
@@ -59,7 +63,7 @@ BIENS = [
        ],
        photo_fichier="107859973.webp"),
 
-  dict(ref="96300379", rouge=True, titre="Villa avec jardin et terrasse",
+  dict(ref="96300379", numero="A", rouge=True, titre="Villa avec jardin et terrasse",
        commune="Agay", secteur="Var (83)",
        agence="Millesime Immobilier Agay", source="Le Figaro Propriétés",
        prix=1380000, prixM2="5 208 € / m²", negociation=None,
@@ -74,7 +78,7 @@ BIENS = [
        ],
        photo_fichier="96300379.webp"),
 
-  dict(ref="89126557", rouge=True, titre="Villa avec piscine et terrasse",
+  dict(ref="89126557", numero="B", rouge=True, titre="Villa avec piscine et terrasse",
        commune="Saint-Raphaël — Boulouris", secteur="Var (83)",
        agence="Agence du Cap Immogolf", source="Le Figaro Propriétés",
        prix=1300000, prixM2="5 909 € / m²", negociation=None,
@@ -89,7 +93,7 @@ BIENS = [
        ],
        photo_fichier="89126557.webp"),
 
-  dict(ref="3250258132", rdv="Lundi 21 septembre, 17h00",
+  dict(ref="3250258132", numero="3", rdv="Lundi 21 septembre, 17h00",
        rdv_lieu="193 rue Ayguebonne, 83700 Saint-Raphaël",
        contact="Michael Meresse", tel=["06 10 50 82 35"],
        titre="Villa 6 pièces",
@@ -107,7 +111,7 @@ BIENS = [
        ],
        photo_fichier="3250258132.webp"),
 
-  dict(ref="107349341", rdv="Mardi 22 septembre, 14h00",
+  dict(ref="107349341", numero="4", rdv="Mardi 22 septembre, 14h00",
        contact="Émilie Catinella", tel=["07 86 60 90 19"],
        titre="Maison en bord de mer avec terrasse",
        commune="Saint-Aygulf", secteur="Var (83)",
@@ -129,7 +133,7 @@ BIENS = [
          ("Superimmo", "https://www.superimmo.com/annonces/achat-maison-136m-saint-aygulf-83370-x11p72a"),
        ]),
 
-  dict(ref="98255163", rouge=True, en_place=True, titre="Maison avec piscine en bord de mer",
+  dict(ref="98255163", numero="5", rouge=True, en_place=True, titre="Maison avec piscine en bord de mer",
        commune="Rayol-Canadel-sur-Mer", secteur="Var (83)",
        agence="Coldwell Banker St Barth Azur", source="Le Figaro Propriétés",
        prix=1500000, prixM2="10 000 € / m²", negociation=None,
@@ -143,7 +147,7 @@ BIENS = [
          "https://lh3.googleusercontent.com/bF3USt9iRsADWDZDOdHY2w1NYjElHMPHVSuDF-ZowFpTU9Ujmfb9d4p4s1ZJKYJWP3vO85jrgR2ix79J-ey8JABkaBabnU0WtoVF6A=rj-w900-h675-n-l80",
        ],
        photo_fichier=None),
-  dict(ref="82558858", rouge=True, titre="Bastide de charme avec vue mer panoramique",
+  dict(ref="82558858", numero="C", rouge=True, titre="Bastide de charme avec vue mer panoramique",
        commune="Saint-Raphaël — Boulouris", secteur="Var (83)",
        agence="BIRD Saint-Raphaël", source="Côte d'Azur Estate",
        prix=1990000, prixM2="7 625 € / m²", negociation=None,
@@ -158,7 +162,7 @@ BIENS = [
          "https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/e1c69c008c6a33f9f3553463d4dc3178.webp",
        ],
        photo_fichier=None),
-  dict(ref="86141231", rouge=True, titre="Appartement-villa sur le toit, vue mer",
+  dict(ref="86141231", numero="D", rouge=True, titre="Appartement-villa sur le toit, vue mer",
        commune="Saint-Raphaël", secteur="Var (83)",
        agence="Azur Astoria — Groupe BIRD", source="Côte d'Azur Estate",
        prix=1690000, prixM2="11 655 € / m²", negociation=None,
@@ -173,7 +177,7 @@ BIENS = [
          "https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/a2e54b5eb0cbbb31a53c4803149981af.webp",
        ],
        photo_fichier=None),
-  dict(ref="87185556", rouge=True, titre="Villa contemporaine rénovée, vue mer",
+  dict(ref="87185556", numero="E", rouge=True, titre="Villa contemporaine rénovée, vue mer",
        commune="Saint-Aygulf", secteur="Var (83)",
        agence="BIRD Saint-Raphaël", source="Côte d'Azur Estate",
        prix=1490000, prixM2="9 141 € / m²", negociation=None,
@@ -188,7 +192,7 @@ BIENS = [
          "https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/6586e2b9b0a68391b2313fbd39f8dcca.webp",
        ],
        photo_fichier=None),
-  dict(ref="26164VWGRV7G", rdv="Mardi 22 septembre, 11h00",
+  dict(ref="26164VWGRV7G", numero="6", rdv="Mardi 22 septembre, 11h00",
        rdv_lieu="Devant la Poste de Boulouris",
        contact="Jérémi Michaux", tel=["06 20 41 09 73"],
        titre="Villa rénovée avec piscine et vue mer",
@@ -205,7 +209,7 @@ BIENS = [
          "https://mms.seloger.com/1/d/b/a/1dbac27f-86fa-46d1-bc4c-73b525cf21b4.jpg?ci_seal=03f602d7555c56b53b0cf93f2ae1c42d7d16b2d2",
        ],
        photo_fichier=None),
-  dict(ref="100823851", rouge=True, en_place=True, titre="Villa provençale avec piscine et vue mer",
+  dict(ref="100823851", numero="7", rouge=True, en_place=True, titre="Villa provençale avec piscine et vue mer",
        commune="Agay", secteur="Var (83)",
        agence="Millesime Immobilier Agay", source="Le Figaro Propriétés",
        prix=1790000, prixM2="7 991 € / m²",
@@ -220,7 +224,7 @@ BIENS = [
          "https://lh3.googleusercontent.com/58ycxLIIbsK3mlfS0dcyo8HSxPXIDWhFg-wJPDfoqIBWJkCynU5KCOp7Dx3EEUxleKkUswfRIFZzK7gnF1W97kwVaZ_QU9uP6CPmNQ=rj-w900-h675-n-l80",
        ],
        photo_fichier=None),
-  dict(ref="3175872602", rdv="Mercredi 23 septembre, 14h00", rdv_confirme=False,
+  dict(ref="3175872602", numero="8", rdv="Mercredi 23 septembre, 14h00", rdv_confirme=False,
        tel=["04 94 44 50 00"],
        titre="Maison en position dominante, vue mer",
        commune="Saint-Aygulf", secteur="Fréjus — Var (83)",
@@ -237,7 +241,7 @@ BIENS = [
        ],
        photo_fichier=None),
 
-  dict(ref="3230333763", rouge=True, en_place=True, contact="Amandine Josier", tel=["06 60 02 50 81"],
+  dict(ref="3230333763", numero="9", rouge=True, en_place=True, contact="Amandine Josier", tel=["06 60 02 50 81"],
        titre="Villa avec piscine et vue panoramique",
        commune="Saint-Aygulf", secteur="Fréjus — Var (83)",
        agence="Century 21 Sud Habitat", source="leboncoin",
@@ -253,7 +257,7 @@ BIENS = [
          "https://img.leboncoin.fr/api/v1/lbcpb1/images/38/ae/7d/38ae7d0867c8fdcbc652572a9af5a67b97f5a809.jpg?rule=ad-image",
        ],
        photo_fichier=None),
-  dict(ref="654", titre="Villa néo-provençale dans un domaine privé",
+  dict(ref="654", numero="10", titre="Villa néo-provençale dans un domaine privé",
        commune="Agay", secteur="Var (83)",
        agence="Millesime Immobilier Agay", source="Millesime Immobilier",
        prix=1150000, prixM2="5 897 € / m²", negociation=None,
@@ -270,7 +274,7 @@ BIENS = [
          "https://www.millesimeimmobilier.com/office5/millesime_03022026/catalog/images/pr_p/6/1/3/5/7/0/2/7/61357027b.jpg",
        ],
        photo_fichier=None),
-  dict(ref="7168", titre="Villa provençale avec vue mer panoramique",
+  dict(ref="7168", numero="11", titre="Villa provençale avec vue mer panoramique",
        commune="Saint-Aygulf", secteur="Fréjus — Var (83)",
        agence="Agence ANGELI", source="Angeli Immobilier",
        prix=950000, prixM2="7 037 € / m²", negociation=None,
@@ -287,7 +291,7 @@ BIENS = [
        ],
        photo_fichier=None),
 
-  dict(ref="6925", rouge=True, en_place=True, titre="Villa de plain-pied rénovée, vue mer panoramique",
+  dict(ref="6925", numero="12", rouge=True, en_place=True, titre="Villa de plain-pied rénovée, vue mer panoramique",
        commune="Saint-Aygulf", secteur="Fréjus — Var (83)",
        agence="Agence ANGELI", source="Angeli Immobilier",
        prix=1050000, prixM2="9 545 € / m²", negociation=None,
@@ -302,7 +306,7 @@ BIENS = [
          "https://angeli-immo.staticlbi.com/1100xauto/images/biens/1/4f93ebf5404bce01e094636323ada256/photo_c11b6b6c17ea0144d0cbb1b355863236.jpg",
        ],
        photo_fichier=None),
-  dict(ref="2571R8MF8B69", titre="Villa vue mer avec piscine, Agay",
+  dict(ref="2571R8MF8B69", numero="13", titre="Villa vue mer avec piscine, Agay",
        commune="Agay", secteur="Saint-Raphaël — Var (83)",
        agence="Agence du Rastel d'Agay", source="SeLoger",
        prix=1280000, prixM2="8 591 € / m²", negociation=None,

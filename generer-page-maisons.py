@@ -207,13 +207,22 @@ def calendrier(biens, reperes):
 # Ils suivent l'ordre d'affichage, donc ils changent si un bien bascule.
 from string import ascii_uppercase  # noqa: E402
 reperes, n, r = [], 0, 0
+pris = {b["numero"] for b in BIENS if b.get("numero")}
 for b in BIENS:
-    # Lettre pour les rouges relégués en fin de page ; une fiche rouge restée
-    # `en_place` garde son rang dans la numérotation.
+    # Le repère figé dans biens.py prime : un bien le garde quoi qu'il arrive.
+    if b.get("numero"):
+        reperes.append(b["numero"])
+        continue
+    # Sinon on en attribue un : lettre pour un rouge relégué, chiffre sinon.
     if b.get("rouge") and not b.get("en_place"):
-        reperes.append(ascii_uppercase[r]); r += 1
+        while ascii_uppercase[r] in pris:
+            r += 1
+        reperes.append(ascii_uppercase[r]); pris.add(ascii_uppercase[r]); r += 1
     else:
-        n += 1; reperes.append(str(n))
+        n += 1
+        while str(n) in pris:
+            n += 1
+        reperes.append(str(n)); pris.add(str(n))
 
 resume = (f'<span><b>{len(retenus)}</b> biens retenus</span>'
           f'<span>De <b>{million(min(prix))}</b> à <b>{million(max(prix))} M€</b></span>'

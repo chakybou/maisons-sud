@@ -51,6 +51,17 @@ Les messageries mettent l'aperçu en cache pendant plusieurs jours. Après une
 mise à jour, un lien déjà partagé continuera d'afficher l'ancienne vignette —
 ajouter `?v=2` à la fin de l'URL force un nouvel aperçu.
 
+## Repères
+
+Chaque bien porte un `numero` figé dans `biens.py` : chiffre pour ceux qui
+restent dans le flux, lettre pour les rouges relégués en fin de page. Il ne
+bouge plus quand la liste change — un bien passé en rouge garde son chiffre,
+et les autres ne se décalent pas. C'est ce repère qui sert dans le planning
+des visites, avec un lien vers la fiche.
+
+Un bien ajouté sans `numero` en reçoit un automatiquement, à la suite des
+existants.
+
 ## Photos
 
 Chaque bien porte un champ `photos` : de 1 à 3 URLs. La première s'affiche en grand, les deux suivantes en vignettes sous elle. Avec une ou deux photos seulement, la mise en page s'adapte.
