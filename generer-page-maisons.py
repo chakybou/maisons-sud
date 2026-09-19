@@ -131,6 +131,8 @@ BIENS = sorted(BIENS, key=lambda b: bool(b.get("rouge")) and not b.get("en_place
 # restent affichées en fin de page mais ne comptent ni dans le total, ni dans
 # la fourchette de prix, ni dans la liste des communes.
 retenus = [b for b in BIENS if not b.get("rouge")] or BIENS
+# Les fiches rouges sont masquées par défaut ; le label de la bascule les compte.
+nb_ecartees = len(BIENS) - len(retenus)
 
 prix = [b["prix"] for b in retenus]
 communes = ", ".join(dict.fromkeys(b["commune"].split(" — ")[0] for b in retenus))
@@ -310,6 +312,25 @@ CSS = """
   a:focus-visible{outline:2px solid var(--mer);outline-offset:3px;}
 
   /* Fiches écartées : tout le texte bascule en rouge via les variables. */
+  /* Bascule des fiches écartées : case à cocher masquée + label cliquable.
+     Aucun JavaScript — Quick Look sur iPhone n'en exécute pas. */
+  #ecartees{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
+  .bascule{display:flex;justify-content:flex-end;padding:20px 0 0;}
+  .bascule label{display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+    padding:9px 18px;border:1px solid var(--trait);border-radius:999px;
+    background:var(--blanc);color:var(--gris);
+    font-size:.86rem;font-weight:500;letter-spacing:.01em;
+    -webkit-tap-highlight-color:transparent;}
+  .bascule label:hover{border-color:#A32E28;color:#A32E28;}
+  .bascule label::before{content:"";width:9px;height:9px;border-radius:50%;
+    background:#A32E28;opacity:.35;}
+  #ecartees:checked ~ .bascule label::before{opacity:1;}
+  .bascule .on{display:none;}
+  #ecartees:checked ~ .bascule .off{display:none;}
+  #ecartees:checked ~ .bascule .on{display:inline;}
+  main .fiche.rouge{display:none;}
+  #ecartees:checked ~ main .fiche.rouge{display:grid;}
+
   .fiche.rouge{--encre:#A32E28;--pin:#A32E28;--mer:#A32E28;--gris:#C2736D;
     color:var(--encre);}
 
@@ -340,6 +361,8 @@ CSS = """
     .visite .lieu{margin-left:0;flex:1 1 auto;}
     header{padding:48px 0 32px;}
     .fiche{grid-template-columns:1fr;gap:24px;padding:36px 0;}
+    .bascule{justify-content:stretch;}
+    .bascule label{width:100%;justify-content:center;}
     .prix .montant{font-size:2rem;}
   }
 """
@@ -379,6 +402,12 @@ page = f"""<!DOCTYPE html>
   </header>
 
   {calendrier(BIENS, reperes)}
+
+  <input type="checkbox" id="ecartees">
+  <p class="bascule"><label for="ecartees">
+    <span class="off">Afficher les {nb_ecartees} maisons écartées</span>
+    <span class="on">Masquer les maisons écartées</span>
+  </label></p>
 
   <main>{"".join(fiche(b, rep) for b, rep in zip(BIENS, reperes))}
   </main>

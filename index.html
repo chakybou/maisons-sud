@@ -103,6 +103,25 @@
   a:focus-visible{outline:2px solid var(--mer);outline-offset:3px;}
 
   /* Fiches écartées : tout le texte bascule en rouge via les variables. */
+  /* Bascule des fiches écartées : case à cocher masquée + label cliquable.
+     Aucun JavaScript — Quick Look sur iPhone n'en exécute pas. */
+  #ecartees{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
+  .bascule{display:flex;justify-content:flex-end;padding:20px 0 0;}
+  .bascule label{display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+    padding:9px 18px;border:1px solid var(--trait);border-radius:999px;
+    background:var(--blanc);color:var(--gris);
+    font-size:.86rem;font-weight:500;letter-spacing:.01em;
+    -webkit-tap-highlight-color:transparent;}
+  .bascule label:hover{border-color:#A32E28;color:#A32E28;}
+  .bascule label::before{content:"";width:9px;height:9px;border-radius:50%;
+    background:#A32E28;opacity:.35;}
+  #ecartees:checked ~ .bascule label::before{opacity:1;}
+  .bascule .on{display:none;}
+  #ecartees:checked ~ .bascule .off{display:none;}
+  #ecartees:checked ~ .bascule .on{display:inline;}
+  main .fiche.rouge{display:none;}
+  #ecartees:checked ~ main .fiche.rouge{display:grid;}
+
   .fiche.rouge{--encre:#A32E28;--pin:#A32E28;--mer:#A32E28;--gris:#C2736D;
     color:var(--encre);}
 
@@ -133,6 +152,8 @@
     .visite .lieu{margin-left:0;flex:1 1 auto;}
     header{padding:48px 0 32px;}
     .fiche{grid-template-columns:1fr;gap:24px;padding:36px 0;}
+    .bascule{justify-content:stretch;}
+    .bascule label{width:100%;justify-content:center;}
     .prix .montant{font-size:2rem;}
   }
 </style>
@@ -147,6 +168,12 @@
   </header>
 
   <section class="planning"><h2>Visites</h2><div class="jours"><div class="jour"><h3>Lundi 21</h3><ul><li class="visite"><span class="h">17h</span><span class="no">Maison <a href="#bien-3250258132">3</a></span><span class="lieu">193 rue Ayguebonne, 83700 Saint-Raphaël</span></li></ul></div><div class="jour"><h3>Mardi 22</h3><ul><li class="visite"><span class="h">9h30</span><span class="no">Maisons <a href="#bien-2571R8MF8B69">13</a>, <a href="#bien-2834">14</a> et <a href="#bien-2828">15</a></span><span class="lieu">Agay</span></li><li class="visite"><span class="h">12h30</span><span class="no">Maison <a href="#bien-103041457">1</a></span><span class="lieu">Saint-Aygulf</span></li><li class="visite"><span class="h">14h</span><span class="no">Maison <a href="#bien-107349341">4</a></span><span class="lieu">Saint-Aygulf</span></li></ul></div><div class="jour"><h3>Mercredi 23</h3><ul><li class="visite"><span class="h">9h30</span><span class="no">Maison <a href="#bien-26164VWGRV7G">6</a></span><span class="lieu">Devant la Poste de Boulouris<span class="apre">à confirmer</span></span></li><li class="visite"><span class="h">14h</span><span class="no">Maisons <a href="#bien-3175872602">8</a> et <a href="#bien-7168">11</a></span><span class="lieu">Saint-Aygulf</span></li></ul></div><div class="jour"><h3>Jeudi 24</h3><p class="rien">—</p></div></div></section>
+
+  <input type="checkbox" id="ecartees">
+  <p class="bascule"><label for="ecartees">
+    <span class="off">Afficher les 12 maisons écartées</span>
+    <span class="on">Masquer les maisons écartées</span>
+  </label></p>
 
   <main>
     <article class="fiche" id="bien-103041457">
