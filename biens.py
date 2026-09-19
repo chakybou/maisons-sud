@@ -192,7 +192,7 @@ BIENS = [
          "https://d36vnx92dgl2c5.cloudfront.net/prod/Elone/3414/media/6586e2b9b0a68391b2313fbd39f8dcca.webp",
        ],
        photo_fichier=None),
-  dict(ref="26164VWGRV7G", numero="6", rdv="Mardi 22 septembre, 17h00", rdv_confirme=False,
+  dict(ref="26164VWGRV7G", numero="6", rdv="Mardi 22 septembre, 17h00",
        rdv_lieu="Devant la Poste de Boulouris",
        contact="Jérémi Michaux", tel=["06 20 41 09 73"],
        titre="Villa rénovée avec piscine et vue mer",
